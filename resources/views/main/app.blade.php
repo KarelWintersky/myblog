@@ -4,8 +4,10 @@
   <meta charset="utf-8">
   <title>@yield('title')</title>
   @yield('head')
+  <link rel="stylesheet" href="{{asset('packages/bootstrap-3.3.6-dist/css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{asset('packages/bootstrap-3.3.6-dist/css/bootstrap-theme.css')}}">
   <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <meta name="keywords" content="@yield('keywords')">
   <meta name="description" content="@yield('description')">
@@ -21,13 +23,21 @@
   <h1>Название сайта</h1>
   <h2>Описание сайта</h2>
 </header>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      @include('main.nav')
+    </div>
+  </div>
+</nav>
 <!-- Конец шапки сайта -->
 
 
-<nav class="bottomMenu">
-  <h2>Навигация:</h2>
-  @include('main.nav')
-</nav>
+
 
 {{-- блок боковой колонки --}}
 <aside id="colRight">
