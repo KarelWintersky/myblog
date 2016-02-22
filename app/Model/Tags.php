@@ -17,8 +17,8 @@ class Tags extends Model
         return $this->all();
     }
     //Получаем все статьи определенного тега
-    public function getArticlesByTag($id){
-        return $this->getTag($id)->first()->articles()->published()->get();
+    public function getArticlesByTag($name){
+        return $this->getTag($name)->first()->articles()->published()->get();
     }
 
 
@@ -29,7 +29,7 @@ class Tags extends Model
     }
 
     //scope
-    public function scopeGetTag($query,$id){
-        $query->where(['id'=>$id]);
+    public function scopeGetTag($query,$name){
+        $query->where(['name'=>$name]);
     }
 }

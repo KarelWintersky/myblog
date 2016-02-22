@@ -9,8 +9,6 @@ class TagsGr extends Model
     protected $table="tags_gr";
     protected $fillable = [
         'articles_id',
-        'tags_id',
-        'created_at',
-        'updated_at'
+        'tags_id'
     ];
 }

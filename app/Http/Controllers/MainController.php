@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 
 class MainController extends Controller
 {
-    protected $date;
+    protected $data;
     //Формируем шапку лого, слайдер и прочее
     public function __construct(Menu $menu)
     {

@@ -26,7 +26,7 @@
             <p>Теги:</p>
             <ul>
                 @foreach($article->tags as $tag)
-                    <li><a href="/tag/{{$tag->id}}">{{$tag->name}}</a></li>
+                    <li><a href="/tag/{{$tag->name}}">{{$tag->name}}</a></li>
                 @endforeach
             </ul>
         </aside>

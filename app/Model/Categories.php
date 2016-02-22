@@ -8,7 +8,7 @@ class Categories extends Model
 {
     protected $table="categories";
     protected $fillable = [
-        'title',
+        'name',
         'weight'
     ];
 
@@ -17,8 +17,8 @@ class Categories extends Model
         return $this->orderByWeight()->get();
     }
     //Получить все опубликованные, отсортированные статьи одной категории
-    public function getArticlesByCategory($id){
-        return $this->getCategory($id)->first()->articles()->published()->orderByParam()->get();
+    public function getArticlesByCategory($name){
+        return $this->getCategory($name)->first()->articles()->published()->orderByParam()->get();
     }
 
     //Для админки
@@ -27,11 +27,11 @@ class Categories extends Model
     }
 
     //scope
-    public function scopeGetCategory($query,$id){
-        $query->where(['id'=>$id]);
+    public function scopeGetCategory($query,$name){
+        $query->where(['name'=>$name]);
     }
-    public function scopeOrderByTitle($query){
-        $query->orderBy('title');
+    public function scopeOrderByName($query){
+        $query->orderBy('name');
     }
     public function scopeOrderByWeight($query){
         $query->orderBy('weight');

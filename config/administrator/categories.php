@@ -6,12 +6,12 @@ return [
     //список колонок
     'columns' => [
         'id',
-        'title',
+        'name',
         'weight'
     ],
     //Поля, доступные для редактирования
     'edit_fields' => [
-        'title' => [
+        'name' => [
             'type' => 'text',
         ],
         'weight' => [

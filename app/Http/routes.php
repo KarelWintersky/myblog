@@ -28,9 +28,9 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'web'], function () {
 
-    Route::get('article/{id}','ArticleController@getArticle');
-    Route::get('tag/{id}','ArticleController@getByTag');
-    Route::get('category/{id}','ArticleController@getByCategory');
+    Route::get('article/{curl}','ArticleController@getArticle');
+    Route::get('tag/{name}','ArticleController@getByTag');
+    Route::get('category/{name}','ArticleController@getByCategory');
     Route::get('index','ArticleController@index');
 
     Route::post('comments','CommentsController@save');
@@ -40,6 +40,4 @@ Route::group(['middleware' => 'web'], function () {
     // Перекрываем регистрацию
     $this->get('register', 'Auth\AuthController@login');
     $this->post('register', 'Auth\AuthController@login');
-
-    Route::get('/home', 'IndexController@index');
 });

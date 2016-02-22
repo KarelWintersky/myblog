@@ -8,6 +8,7 @@ class Articles extends Model
 {
     protected $table="articles";
     protected $fillable = [
+        'curl',
         'active',
         'title',
         'preview',
@@ -23,21 +24,21 @@ class Articles extends Model
         return $this->published()->orderByParam()->get();
     }
     //Получаем опубликованную статью по ID
-    public function getArticleById($id){
-        return $this->published()->getArticle($id)->orderByParam()->get();
+    public function getArticleByCurl($curl){
+        return $this->published()->GetArticleByCurl($curl)->orderByParam()->get();
     }
     //Получить все статьи определенной категории
-    public function getArticleByCategory($id){
-        return $this->published()->getCategory($id)->orderByParam()->get();
+    public function getArticleByCategory($name){
+        return $this->published()->getCategory($name)->orderByParam()->get();
     }
     //Получить все статьи определенного тега
-    public function getArticleByTag($id){
-        return $this->published()->getCategory($id)->orderByParam()->get();
+    public function getArticleByTag($name){
+        return $this->published()->getCategory($name)->orderByParam()->get();
     }
     //Получить опубликованные все теги определенной статьи (Таким способом можно сделать например фильтр)
     //2й published уже метод класса мадели Comments
-    public function getCommentsById($id){
-        return $this->published()->getArticle($id)->first()->comments()->published()->get();
+    public function getCommentsById($curl){
+        return $this->published()->GetArticleByCurl($curl)->first()->comments()->published()->get();
     }
 
 
@@ -59,8 +60,8 @@ class Articles extends Model
 
 
     //scope
-    public function scopeGetArticle($query,$id){
-        $query->where(['id'=>$id]);
+    public function scopeGetArticleByCurl($query,$curl){
+        $query->where(['curl'=>$curl]);
     }
     public function scopePublished($query){
         $query->where(['active'=>1]);
@@ -73,6 +74,6 @@ class Articles extends Model
     //то нужно будет поменять поле только в одном месте (в scopeOrderByParam)
     //Полный полиморфизм))))
     public function scopeOrderByParam($query){
-        $query->orderBy('updated_at');
+        $query->orderBy('created_at');
     }
 }

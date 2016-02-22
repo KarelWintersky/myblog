@@ -15,7 +15,7 @@
 <body>
 
 <!-- Шапка сайта -->
-<header id="headerInner">
+<header class="container">
   <figure>
     <p><img src="images/logo.jpg" alt="Логотип"/></p>
     <figcaption>блоголого</figcaption>
@@ -36,27 +36,30 @@
 </nav>
 <!-- Конец шапки сайта -->
 
+<div class="container">    
+    <div class="row">
+        <div class="col-sm-3 col-md-4">
+            <!--блок боковой колонки-->
+            <aside id="colRight">
+                <h2>Категории</h2>
+                <ul>
+                  <ul>
+                    @foreach($category as $item)
+                      <li><a href="/category/{!!$item->name!!}">{!!$item->name!!}</a></li>
+                    @endforeach
+                  </ul>
+                </ul>
+            </aside>
+        </div>
+        <div class="col-sm-7 col-md-6">
+            <main><!-- основной блок -->
+                @yield('content')
+            </main>
+        </div>    
+    </div>
+</div>
 
-
-
-{{-- блок боковой колонки --}}
-<aside id="colRight">
-    <h2>Категории</h2>
-    <ul>
-      <ul>
-        @foreach($category as $item)
-          <li><a href="/category/{!!$item->id!!}">{!!$item->title!!}</a></li>
-        @endforeach
-      </ul>
-    </ul>
-</aside>
-
-
-<main><!-- основной блок -->
-    @yield('content')
-</main>
-
-<footer id="footerInner"><!-- Футер сайта -->
+<footer><!-- Футер сайта -->
     <!-- ......... -->
 </footer>
 </body>

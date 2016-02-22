@@ -6,6 +6,7 @@ return [
     //список колонок
     'columns' => [
         'id',
+        'curl',
         'title',
         'active',
         'comments_enable',
@@ -16,7 +17,7 @@ return [
         'categories_id' => [
             'title' => "Категория",
             'relationship' => 'category', //this is the name of the Eloquent relationship method!
-            'select' => "(:table).title",
+            'select' => "(:table).name",
         ],
         'tags'  => [
             'title' => "Теги",
@@ -28,9 +29,12 @@ return [
     'edit_fields' => [
         'active' => [
             'type' => 'bool',
-        ],
+        ],        
         'comments_enable' => [
             'type' => 'bool',
+        ],
+        'curl' => [
+            'type' => 'text',
         ],
         'title' => [
             'type' => 'text',
@@ -51,7 +55,7 @@ return [
         'category' => [
             'type' => 'relationship',
             'title' => 'Категории',
-            'name_field' => 'title',
+            'name_field' => 'name',
         ],
         'tags' => [
             'type' => 'relationship',
@@ -66,10 +70,13 @@ return [
         'comments_enable' => [
             'type' => 'bool',
         ],
+        'curl' => [
+            'type' => 'text',
+        ],
         'category' => [
             'type' => 'relationship',
             'title' => 'Категории',
-            'name_field' => 'title',
+            'name_field' => 'name',
         ],
         'tags' => [
             'type' => 'relationship',
