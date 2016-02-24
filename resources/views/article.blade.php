@@ -22,24 +22,23 @@
         </header>
             <h2>{{$article->title}}</h2>
         </header>
-        <aside>
-            <p>Теги:</p>
-            <ul>
+        <aside> 
+            <p>tags
                 @foreach($article->tags as $tag)
-                    <li><a href="/tag/{{$tag->name}}">{{$tag->name}}</a></li>
+                    | <a href="/tag/{{$tag->name}}">{{$tag->name}}</a>
                 @endforeach
-            </ul>
+            </p>
         </aside>
+        
         <p>Дата публикации:
             <time pubdate datetime={{$article->updated_at->format('Y-m-d\TH:j:s')}}"2012-12-23T13:44:55">
-                {{$article->updated_at->format('Y.m.d H:j:s')}}
+                {{$article->created_at->format('Y.m.d H:j:s')}}
             </time>
         </p>
-        <div id="content">
-            {!!$article->content!!}
-        </div>
-
-        @if($comments)
+        
+        {!!$article->content!!}
+        
+        @if(!empty($comments->first()))
             <section id="comments">
                 <h3>Коментарии:</h3>
                 <div>
@@ -53,6 +52,7 @@
                 </div>
             </section>
         @endif
+       
 
         <aside id="ad_comment">
             <h3>Добавить коментарий:</h3>
@@ -65,9 +65,9 @@
                     </ul>
                 @endif
             </div>
-            {{Form::open(array('action' => 'CommentsController@save'))}}
+            {{Form::open(['action' => 'CommentsController@save','role'=>"form"])}}
             {{Form::hidden('article_id',$article->id)}}
-
+            <!--  -->
             <div class="comment-form-block">
                 <label for="article_id">Имя:</label>
                 <span class="required">*</span>

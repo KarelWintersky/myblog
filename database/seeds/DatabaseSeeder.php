@@ -56,10 +56,10 @@ class TagsTableSeeder extends Seeder {
     {
         DB::table('tags')->delete();
         DB::table('tags')->insert([
-            ['name' => 'first_tag'  ],
-            ['name' => 'second_tag' ],
-            ['name' => 'third_tag'  ],
-            ['name' => 'fourth_tag' ],
+            ['name' => 'first-tag'  ],
+            ['name' => 'second-tag' ],
+            ['name' => 'third-tag'  ],
+            ['name' => 'fourth-tag' ],
         ]);
     }
 }
@@ -70,10 +70,10 @@ class CategoriesTableSeeder extends Seeder {
     {
         DB::table('categories')->delete();
         DB::table('categories')->insert([
-            ['name' => 'first_category',     'weight' => 10  ],
-            ['name' => 'second_category',    'weight' => 20  ],
-            ['name' => 'third_category',     'weight' => 30  ],
-            ['name' => 'fourth_category',    'weight' => 40  ],
+            ['name' => 'first-category',     'weight' => 10  ],
+            ['name' => 'second-category',    'weight' => 20  ],
+            ['name' => 'third-category',     'weight' => 30  ],
+            ['name' => 'fourth-category',    'weight' => 40  ],
         ]);
     }
 }
@@ -98,13 +98,37 @@ class ArticlesTableSeeder extends Seeder {
     public function run()
     {
         DB::table('articles')->delete();        
-        $categories = DB::table('categories')->get();        
+        $categories = DB::table('categories')->get(); 
+        
+        //Рыбные текста:
+        $paragraph_1 = '<p class="text-justify">Каждый веб-разработчик знает, что такое текст-«рыба». Текст этот, 
+            не имеет никакого отношения к обитателям водоемов. Используется он веб-дизайнерами для вставки на 
+            интернет-страницы и демонстрации внешнего вида контента, просмотра шрифтов, абзацев, отступов и т.д. 
+            Так как цель применения такого текста исключительно демонстрационная, то и смысловую нагрузку ему 
+            нести совсем необязательно. Более того, нечитабельность текста сыграет на руку при оценке качества 
+            восприятия макета.</p>';
+        $paragraph_2 = '<p class="text-justify">Самым известным «рыбным» текстом является знаменитый Lorem ipsum. 
+            Считается, что впервые его применили в книгопечатании еще в XVI веке. Своим появлением Lorem ipsum 
+            обязан древнеримскому философу Цицерону, ведь именно из его трактата «О пределах добра и зла» 
+            средневековый книгопечатник вырвал отдельные фразы и слова, получив текст-«рыбу», широко используемый 
+            и по сей день. Конечно, возникают некоторые вопросы, связанные с использованием Lorem ipsum на сайтах 
+            и проектах, ориентированных на кириллический контент – написание символов на латыни и на кириллице 
+            значительно различается.</p>';
+        $paragraph_3 = '<p class="text-justify">И даже с языками, использующими латинский алфавит, могут возникнуть 
+            небольшие проблемы: в различных языках те или иные буквы встречаются с разной частотой, имеется разница 
+            в длине наиболее распространенных слов. Отсюда напрашивается вывод, что все же лучше использовать в 
+            качестве «рыбы»  текст на том языке, который планируется использовать при запуске проекта. Сегодня 
+            существует несколько вариантов Lorem ipsum, кроме того, есть специальные генераторы, создающие собственные 
+            варианты текста на основе оригинального трактата, благодаря чему появляется возможность получить более длинный 
+            неповторяющийся набор слов.</p>';
+
+        
         DB::table('articles')->insert([
             [   'curl'      => 'My-first-article', 
                 'active'    => 1, 
                 'title'     => 'My first article',        
-                'preview'   => str_random(200),                 
-                'content'   => '<p>'.str_random(600).'</p>',
+                'preview'   => $paragraph_1,//str_random(200),                 
+                'content'   => $paragraph_1.$paragraph_2.$paragraph_3,
                 'meta_description' => 'meta_description',
                 'meta_keywords'    => 'meta_keywords',
                 'categories_id'    => $categories[0]->id,
@@ -113,8 +137,8 @@ class ArticlesTableSeeder extends Seeder {
             [   'curl'      => 'My-second-article', 
                 'active'    => 1, 
                 'title'     => 'My second article',        
-                'preview'   => str_random(200),                 
-                'content'   => '<p>'.str_random(600).'</p>',
+                'preview'   => $paragraph_2,                 
+                'content'   => $paragraph_2.$paragraph_3.$paragraph_1,
                 'meta_description' => 'meta_description',
                 'meta_keywords'    => 'meta_keywords',
                 'categories_id'    => $categories[1]->id,
@@ -123,8 +147,8 @@ class ArticlesTableSeeder extends Seeder {
             [   'curl'      => 'My-third-article', 
                 'active'    => 1, 
                 'title'     => 'My third article',        
-                'preview'   => str_random(200),                 
-                'content'   => '<p>'.str_random(600).'</p>',
+                'preview'   => $paragraph_3,                 
+                'content'   => $paragraph_3.$paragraph_1.$paragraph_2,
                 'meta_description' => 'meta_description',
                 'meta_keywords'    => 'meta_keywords',
                 'categories_id'    => $categories[1]->id,

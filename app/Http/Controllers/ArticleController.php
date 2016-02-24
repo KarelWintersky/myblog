@@ -24,7 +24,7 @@ class ArticleController extends MainController
         $this->data['article'] = $articleByCurl;
 
         //Получаем и записываем данныеые о коментариях
-        $this->data['comments'] = $article->getArticleByCurl($curl);
+        $this->data['comments'] = $articleByCurl->getCommentsByСurl($curl);
         return view('article',$this->data);
     }
     //Выводим полученную группу статей в виде превью в контенте

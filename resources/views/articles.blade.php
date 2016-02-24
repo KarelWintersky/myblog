@@ -6,37 +6,39 @@
 
 
 @section('keywords')
-
+    
 @endsection
 
 
 @section('description')
-
+    
 @endsection
 
 
 @section('content')
     @foreach($articles as $article)
-        <article style="border:solid 1px red;">
-            </header>
+        <article>
+            <header>
             <h2><a href="/article/{{$article->curl}}">{{$article->title}}</a></h2>
             </header>
-            <aside>
-                <p>Теги:</p>
-                <ul>
+            <aside> 
+                <p>tags
                     @foreach($article->tags as $tag)
-                        <li><a href="/tag/{{$tag->name}}">{{$tag->name}}</a></li>
+                        | <a href="/tag/{{$tag->name}}">{{$tag->name}}</a>
                     @endforeach
-                </ul>
+                </p>
             </aside>
             <p>Дата публикации:
-                <time pubdate datetime={{$article->updated_at->format('Y-m-d\TH:j:s')}}"2012-12-23T13:44:55">
-                    {{$article->created_at->format('Y.m.d H:j:s')}}
+                <time pubdate datetime="{{$article->updated_at->format('Y-m-d\TH:j:s')}}">
+                    {{$article->created_at->format('d.m.Y H:j:s')}}
                 </time>
             </p>
-            <div id="content">
-                {!!$article->preview!!}
-            </div>
+            {!!$article->preview!!}
+            <p class="text-right">
+                <a href="/article/{{$article->curl}}">
+                    далее...
+                </a>
+            </p>
         </article>
     @endforeach
 @endsection

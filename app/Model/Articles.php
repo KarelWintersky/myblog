@@ -35,9 +35,9 @@ class Articles extends Model
     public function getArticleByTag($name){
         return $this->published()->getCategory($name)->orderByParam()->get();
     }
-    //Получить опубликованные все теги определенной статьи (Таким способом можно сделать например фильтр)
+    //Получить опубликованные коментарии определённой статьи (Таким способом можно сделать например фильтр)
     //2й published уже метод класса мадели Comments
-    public function getCommentsById($curl){
+    public function getCommentsByСurl($curl){
         return $this->published()->GetArticleByCurl($curl)->first()->comments()->published()->get();
     }
 

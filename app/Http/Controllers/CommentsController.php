@@ -26,6 +26,7 @@ class CommentsController extends Controller
     public function show()
     {
         $comments=Comments::all();
+        dd($comments);
         return view('comments',['comments'=>$comments]);
     }
 }
