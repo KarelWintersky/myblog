@@ -55,7 +55,7 @@ class Articles extends Model
     //Отношение 1 к * (коментарии)
     public function comments()
     {
-        return $this->hasMany('App\Model\Comments','articles_id','id');
+        return $this->hasMany('App\Model\Comments','articles_id','id')->published();
     }
 
 

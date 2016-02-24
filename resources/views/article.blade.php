@@ -32,62 +32,117 @@
         
         <p>Дата публикации:
             <time pubdate datetime={{$article->updated_at->format('Y-m-d\TH:j:s')}}"2012-12-23T13:44:55">
-                {{$article->created_at->format('Y.m.d H:j:s')}}
+                {{$article->created_at->format('d.m.Y H:j:s')}}
             </time>
         </p>
         
         {!!$article->content!!}
         
-        @if(!empty($comments->first()))
+        @if($article->comments->first())
             <section id="comments">
                 <h3>Коментарии:</h3>
-                <div>
-                    <div class="comment">
-                        <ul>
-                            @foreach($comments as $comment)
-                                <li>Автор: {{$comment->user}}<br>{{$comment->message}}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
+                    @foreach($article->comments as $comment)
+                        @if($comment->answer != 1)
+                            <div class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object" src="/images/img_64_64.png">
+                                </a>
+
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{$comment->user}}</h4>
+                                        {{$comment->message}}                          
+                                    </div>
+                            </div>
+                        @else
+                            <!-- Ответ -->
+                            <div class="media well">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object" src="/images/img_adm_64_64.png">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Хозяин блога</h4>
+                                    {!!$comment->message!!}                          
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
             </section>
         @endif
        
 
-        <aside id="ad_comment">
-            <h3>Добавить коментарий:</h3>
-            <div id="error">
-                @if (count($errors) > 0)
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                @endif
-            </div>
-            {{Form::open(['action' => 'CommentsController@save','role'=>"form"])}}
+        <aside>
+            
+            <h3>Добавить коментарий:</h3>            
+            
+            {{Form::open([
+                'id'        =>  'comment_form',
+                'action'    =>  'CommentsController@save',
+                'role'      =>  'form',
+            ])}}            
+            
             {{Form::hidden('article_id',$article->id)}}
-            <!--  -->
-            <div class="comment-form-block">
-                <label for="article_id">Имя:</label>
-                <span class="required">*</span>
-                <div class="form-text" id="user">{{Form::text('user')}}</div>
+            
+           
+            <div class="form-group {{$errors->has('user')?'has-error has-feedback':''}}">
+                {!!Form::label( 'user', 
+                                ($errors->has('user')?implode('<br />',$errors->get('user')):'Name'),
+                                ['class'=>'control-label']
+                )!!}               
+                {{Form::text('user',null,[
+                    'class'         => 'form-control',
+                    'placeholder'   => 'Введите имя'
+                ])}}
+                @if($errors->has('user'))
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                @endif   
             </div>
-            <div class="comment-form-block">
-                <label for="article_id">Email:</label>
-                <span class="required">*</span>
-                <div class="form-text" id="email">{{Form::text('email')}}</div>
+            
+            
+            <div class="form-group {{$errors->has('email')?'has-error has-feedback':''}}">
+                {!!Form::label( 'email', 
+                                ($errors->has('email')?implode('<br />',$errors->get('email')):'Email'),
+                                ['class'=>'control-label']
+                )!!}
+                {{Form::email('email',null,[
+                    'id'            =>  'inputError',
+                    'class'         =>  'form-control',
+                    'placeholder'   =>  'Введите email'
+                ])}}
+                @if($errors->has('email'))
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                @endif    
             </div>
-            <div class="comment-form-block">
-                <label for="article_id">Сообщение:</label>
-                <span class="required">*</span>
-                <div class="form-text" id="message">{{Form::text('message')}}</div>
+            
+            
+            <div class="form-group {{$errors->has('message')?'has-error has-feedback':''}}">
+                {!!Form::label( 'message', 
+                                ($errors->has('message')?implode('<br />',$errors->get('message')):'Message'),
+                                ['class'=>'control-label']
+                )!!}
+                {{Form::textarea('message',null,[
+                    'class'         =>  'form-control',
+                    'placeholder'   =>  'Введите сообщение'
+                ])}}
+                @if($errors->has('message'))
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                @endif 
             </div>
-            <div class="g-recaptcha" data-sitekey="6LfadRcTAAAAAEmsyAyhnjOdVa3oQDxPFW2mW2jp"></div>
-            <div id="check_bot">
+            
+            <!--div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LfadRcTAAAAAEmsyAyhnjOdVa3oQDxPFW2mW2jp"></div>
+            </div-->    
+            
+            <div style="display:none;">
                 {{Form::text('check_bot')}}
             </div>
-            <div class="button">{{Form::submit('Отправить коментарий')}}</div>
+            
+            <div class="form-group">
+                {{Form::button('Отправить комментарий',[
+                    'id'      => 'comment_form_button',
+                    'class'   => 'btn btn-success',        
+                    'onClick' => "document.getElementById('comment_form').submit();",
+                ])}}
+            </div>
         </aside>
     </article>
 @endsection

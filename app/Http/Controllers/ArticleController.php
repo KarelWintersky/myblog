@@ -20,11 +20,10 @@ class ArticleController extends MainController
         $articleByCurl->tags;
         //Добавляем название категорий
         $articleByCurl->category;
-        //
+        //Добавляем опубликованные коментарии
+        $articleByCurl->comments;
+        
         $this->data['article'] = $articleByCurl;
-
-        //Получаем и записываем данныеые о коментариях
-        $this->data['comments'] = $articleByCurl->getCommentsByСurl($curl);
         return view('article',$this->data);
     }
     //Выводим полученную группу статей в виде превью в контенте

@@ -1,4 +1,4 @@
-<?php
+<?php //php artisan db:seed
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
@@ -31,6 +31,9 @@ class DatabaseSeeder extends Seeder
         
         $this->call(TagsGrTableSeeder::class);
         $this->command->info('Tags where added;');  
+        
+        $this->call(CommentsTableSeeder::class);
+        $this->command->info('Comments where added;'); 
         
         Model::reguard();
     }
@@ -174,6 +177,34 @@ class TagsGrTableSeeder extends Seeder {
             ['articles_id' => $articles[1]->id,  'tags_id' => $tags[0]->id  ],
             ['articles_id' => $articles[1]->id,  'tags_id' => $tags[1]->id  ],
             ['articles_id' => $articles[2]->id,  'tags_id' => $tags[0]->id  ],
+        ]); 
+    }
+}
+
+//Создаёс коментарии
+//Создаем промежуточную таблицу между Статьями и тегами
+class CommentsTableSeeder extends Seeder {
+    public function run()
+    {
+        DB::table('comments')->delete();
+        $articles =  DB::table('articles')->get();
+        
+        DB::table('comments')->insert([ 
+            ['articles_id' => $articles[0]->id, 'active' => 1, 'answer' => 0, 'user' => 'Пушкин', 'email' => 'pushkin@gmail.com', 'site' => 'pushkin.com',
+             'message' => 'Алекса́ндр Серге́евич Пу́шкин — русский поэт, драматург и прозаик. Ещё при жизни Пушкина сложилась его репутация величайшего
+                           национального русского поэта. Пушкин рассматривается как создатель современного русского литературного языка.'
+            ],
+            ['articles_id' => $articles[0]->id, 'active' => 1, 'answer' => 0, 'user' => 'Есенин', 'email' => 'esenin@gmail.com', 'site' => 'esenin.com',
+             'message' => 'Серге́й Алекса́ндрович Есе́нин — русский поэт, представитель новокрестьянской поэзии и лирики, а в более позднем периоде творчества
+                              — имажинизма'
+            ],
+            ['articles_id' => $articles[0]->id, 'active' => 1, 'answer' => 1, 'user' => 'Хозяин блога', 'email' => '', 'site' => '',
+              'message' => '<p>Хорошие рыбные комментарии! Всем спасибо.</p>'  
+            ],
+            ['articles_id' => $articles[0]->id, 'active' => 1, 'answer' => 0, 'user' => 'Толстой', 'email' => 'levtolstoy@gmail.com', 'site' => 'www.levtolstoy.ru',
+             'message' => 'Граф Лев Никола́евич Толсто́й — один из наиболее известных русских писателей и мыслителей, один из величайших писателей мира.
+                           Участник обороны Севастополя'
+            ],
         ]); 
     }
 }
