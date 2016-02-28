@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Model\Categories;
 use App\Model\Menu;
 use Illuminate\Support\ServiceProvider;
+use Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Menu $menu, Categories $categories)
     {
+
+
+
+
         //Подключаем навигацию по категориям во все представления
         view()->share('category', $categories->getAllCategory());
 

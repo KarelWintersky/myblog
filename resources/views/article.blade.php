@@ -71,8 +71,7 @@
        
 
         <aside>
-            
-            <h3>Добавить коментарий:</h3>            
+            <h3>Добавить коментарий:</h3>
             
             {{Form::open([
                 'id'        =>  'comment_form',
@@ -82,8 +81,7 @@
             
             {{Form::hidden('article_id',$article->id)}}
             
-           
-            <div class="form-group {{$errors->has('user')?'has-error has-feedback':''}}">
+            <div class="form-group {{$errors->has()?($errors->has('user')?'has-error':'has-success').' has-feedback':''}}">
                 {!!Form::label( 'user', 
                                 ($errors->has('user')?implode('<br />',$errors->get('user')):'Name'),
                                 ['class'=>'control-label']
@@ -92,13 +90,17 @@
                     'class'         => 'form-control',
                     'placeholder'   => 'Введите имя'
                 ])}}
-                @if($errors->has('user'))
-                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                @endif   
+                @if($errors->has())
+                    @if($errors->has('user'))
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    @else
+                        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                    @endif
+                @endif
             </div>
             
             
-            <div class="form-group {{$errors->has('email')?'has-error has-feedback':''}}">
+            <div class="form-group {{$errors->has()?($errors->has('email')?'has-error':'has-success').' has-feedback':''}}">
                 {!!Form::label( 'email', 
                                 ($errors->has('email')?implode('<br />',$errors->get('email')):'Email'),
                                 ['class'=>'control-label']
@@ -108,13 +110,17 @@
                     'class'         =>  'form-control',
                     'placeholder'   =>  'Введите email'
                 ])}}
-                @if($errors->has('email'))
-                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                @endif    
+                @if($errors->has())
+                    @if($errors->has('user'))
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    @else
+                        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                    @endif
+                @endif
             </div>
             
             
-            <div class="form-group {{$errors->has('message')?'has-error has-feedback':''}}">
+            <div class="form-group {{$errors->has()?($errors->has('message')?'has-error':'has-success').' has-feedback':''}}">
                 {!!Form::label( 'message', 
                                 ($errors->has('message')?implode('<br />',$errors->get('message')):'Message'),
                                 ['class'=>'control-label']
@@ -123,9 +129,13 @@
                     'class'         =>  'form-control',
                     'placeholder'   =>  'Введите сообщение'
                 ])}}
-                @if($errors->has('message'))
-                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                @endif 
+                @if($errors->has())
+                    @if($errors->has('message'))
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    @else
+                        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                    @endif
+                @endif
             </div>
             
             <!--div class="form-group">

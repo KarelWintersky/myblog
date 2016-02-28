@@ -156,12 +156,16 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //
+        App\Providers\BladeServiceProvider::class,
 
         /*
          * DevProvider
          */
         Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+
         /*
          * ProdProvider
          */
