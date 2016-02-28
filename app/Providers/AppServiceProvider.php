@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
 
 
         //Подключаем навигацию по категориям во все представления
-        view()->share('category', $categories->getAllCategory());
+        view()->share('categories', $categories->getAllCategory());
 
         //Подключаем основное меню во все представления
         view()->share('menu', $menu->getMenu());

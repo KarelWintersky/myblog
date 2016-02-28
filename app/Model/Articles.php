@@ -21,7 +21,7 @@ class Articles extends Model
 
     //Получаем все опубликованные статьи
     public function getAllArticles(){
-        return $this->published()->orderByParam()->get();
+        return $this->published()->orderByParam();
     }
     //Получаем опубликованную статью по ID
     public function getArticleByCurl($curl){

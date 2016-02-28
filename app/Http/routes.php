@@ -28,10 +28,10 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'web'], function () {
 
-    Route::get('article/{curl}','ArticleController@getArticle');
-    Route::get('tag/{name}','ArticleController@getByTag');
-    Route::get('category/{name}','ArticleController@getByCategory');
-    Route::get('index','ArticleController@index');
+    Route::get('article/{curl}', ['as'=>'article',  'uses'=>'ArticleController@getArticle']);
+    Route::get('tag/{name}',     ['as'=>'tag',      'uses'=>'ArticleController@getByTag']);
+    Route::get('category/{name}',['as'=>'category', 'uses'=>'ArticleController@getByCategory']);
+    Route::get('index',          ['as'=>'home',     'uses'=>'ArticleController@index']);
 
     Route::post('comments','CommentsController@save');
 

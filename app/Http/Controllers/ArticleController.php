@@ -28,6 +28,7 @@ class ArticleController extends MainController
     }
     //Выводим полученную группу статей в виде превью в контенте
     private function preViews($articles){
+        $articles = $articles->paginate(2);
         foreach($articles as $article){
             $article->category;
             $article->tags;
@@ -39,12 +40,22 @@ class ArticleController extends MainController
     }
     //Получить все статьи определенного тега
     public function getByTag($name,Tags $tags){
-        $articlesByTag = $tags->getArticlesByTag($name);
+        //Получаем тег
+        $tag = $tags->geTagByName($name);
+        //Записываем данные тега в передаваемый параметр
+        $this->data['category'] = $tag;
+        //Получаем все статьи определённого тега
+        $articlesByTag = $tag->getArticlesByCondition();
         return $this->preViews($articlesByTag);
     }
     //Получить все статьи определенной категории
     public function getByCategory($name,Categories $categories){
-        $articlesByCategory = $categories->getArticlesByCategory($name);
+        //Получаем категорию
+        $category = $categories->getCategoryByName($name);
+        //Записываем данные категории в передаваемый параметр
+        $this->data['category'] = $category;
+        //Получаем все статьи определённой категории
+        $articlesByCategory = $category->getArticlesByCondition();
         return $this->preViews($articlesByCategory);
     }
     //Главная страница, выводим все опубликованные статьи

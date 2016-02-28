@@ -1,23 +1,27 @@
 @extends('main.app')
 
 @section('title')
-    {{$article->title}}
+    <title>{{$article->title}}</title>
 @endsection
 
 @section('keywords')
-    {{$article->meta_keywords}}
+    <meta name="keywords" content="{{$article->meta_keywords}}">
 @endsection
 
 @section('description')
-    {{$article->meta_description}}
+    <meta name="description" content="{{$article->meta_description}}">
 @endsection
 
 @section('head')
     <script src="https://www.google.com/recaptcha/api.js"></script>
 @endsection
 
+@section('bread')
+    {!! Breadcrumbs::render('article', $article) !!}
+@endsection
 
 @section('content')
+
     <article>
         </header>
             <h2>{{$article->title}}</h2>

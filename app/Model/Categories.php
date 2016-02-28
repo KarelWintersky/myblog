@@ -18,13 +18,22 @@ class Categories extends Model
     }
     //Получить все опубликованные, отсортированные статьи одной категории
     public function getArticlesByCategory($name){
-        return $this->getCategory($name)->first()->articles()->published()->orderByParam()->get();
+        return $this->getCategory($name)->first()->getArticlesByCondition();
+    }
+    //Получить определённую категорию
+    public function getCategoryByName($name){
+        return $this->getCategory($name)->first();
     }
 
-    //Для админки
+    //Для админки (получить все статьи)
     public function articles(){
         return $this->hasMany('App\Model\Articles','categories_id','id');
     }
+    //Получить все опубликованные, отсортированные статьи одной категории
+    public function getArticlesByCondition(){
+        return $this->articles()->published()->orderByParam();
+    }
+
 
     //scope
     public function scopeGetCategory($query,$name){

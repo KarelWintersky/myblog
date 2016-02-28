@@ -1,15 +1,15 @@
 @extends('main.app')
 
 @section('title')
-    Ошибка | страница не найдена
+    Страница не найдена | Ошибка 404
 @endsection
 
 @section('keywords')
-    Ошибка
+    ошибка,404
 @endsection
 
 @section('description')
-    Ошибка
+    Ошибка 404
 @endsection
 
 @section('content')
