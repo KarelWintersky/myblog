@@ -1,4 +1,5 @@
-@extends('layouts.app')
+<?php /*@extends('layouts.app')*/?>
+@extends('main.app')
 
 <!-- Main Content -->
 @section('content')

@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\MainController;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
-class AuthController extends Controller
+class AuthController extends MainController
 {
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -36,7 +36,7 @@ class AuthController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {   parent::__construct();
         $this->middleware('guest', ['except' => 'logout']);
     }
 

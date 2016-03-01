@@ -73,7 +73,7 @@
             </section>
         @endif
        
-
+        @if($article->comments_enable)
         <aside>
             <h3>Добавить коментарий:</h3>
             
@@ -158,5 +158,10 @@
                 ])}}
             </div>
         </aside>
+        @else
+            <div class="alert alert-warning">
+                <strong>Предупреждение!</strong> Комментирование отключено!
+            </div>
+        @endif
     </article>
 @endsection

@@ -32,7 +32,7 @@ class Categories extends Model
     //Получить все опубликованные, отсортированные статьи одной категории
     public function getArticlesByCondition(){
         return $this->articles()->published()->orderByParam();
-    }
+    } 
 
 
     //scope

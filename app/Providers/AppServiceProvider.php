@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Model\Categories;
-use App\Model\Menu;
+//use App\Model\Categories;
+//use App\Model\Menu;
 use Illuminate\Support\ServiceProvider;
 use Blade;
 
@@ -14,17 +14,17 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Menu $menu, Categories $categories)
+    public function boot()
     {
-
-
-
-
+        //Как один из вариантов передать во все страницы меню
+        
         //Подключаем навигацию по категориям во все представления
-        view()->share('categories', $categories->getAllCategory());
+        //$categories = new Categories;
+        //view()->share('categories', $categories->getAllCategory());
 
         //Подключаем основное меню во все представления
-        view()->share('menu', $menu->getMenu());
+        //$menu = new Menu;
+        //view()->share('menu', $menu->getMenu());
     }
 
 

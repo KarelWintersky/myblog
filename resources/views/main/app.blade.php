@@ -1,7 +1,8 @@
 <!doctype html>
-<html>
+<html lang="ru">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   @yield('title')
   @yield('head')
   <link rel="stylesheet" href="{{asset('packages/bootstrap-3.3.6-dist/css/bootstrap.css')}}">
@@ -17,41 +18,44 @@
   @yield('description')
 </head>
 <body>
-    
+    <div class="container">  
+    </div>
     <!-- Шапка сайта -->
-    <header class="container">
+    <header class="header media well">
       <!--figure>
         <p><img src="images/logo.jpg" alt="Логотип"/></p>
         <figcaption>блоголого</figcaption>
       </figure-->
-      <h1>Название сайта</h1>
+      <h1>Демонстрационный сайт / блог</h1>
       <h2>Описание сайта</h2>
     </header>
+    
+    <main role="main">
+        <!-- Хлебные крошки -->
+        @yield('bread')
+        <!--конец блока-->
 
-    <!-- Хлебные крошки -->
-    @yield('bread')
-    <!--конец блока-->
+        <!-- Блок навигации -->
+        @include('main.nav')
+        <!--конец блока-->
 
-    <!-- Блок навигации -->
-    @include('main.nav')
-    <!--конец блока-->
-
-    <div class="container">    
-        <div class="row">
-            <div class="col-sm-3 col-md-4 ">
-                <!--Блок боковой колонки-->
-                @include('main.cat')
-                <!--конец блока-->          
+        <div class="container">    
+            <div class="row">
+                <div class="col-sm-3 col-md-4 ">
+                    <!--Блок боковой колонки-->
+                    @include('main.cat')
+                    <!--конец блока-->          
+                </div>
+                <div class="col-sm-7 col-md-6">
+                    <main>
+                        <!--Блок основного контента-->
+                        @yield('content')
+                        <!--конец блока-->
+                    </main>
+                </div>    
             </div>
-            <div class="col-sm-7 col-md-6">
-                <main>
-                    <!--Блок основного контента-->
-                    @yield('content')
-                    <!--конец блока-->
-                </main>
-            </div>    
         </div>
-    </div>
+    </main>
 
     <footer class="navbar-default navbar-inverse navbar-fixed-bottom">
         <div class="container-fluid">

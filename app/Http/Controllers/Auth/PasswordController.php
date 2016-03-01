@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\MainController;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
-class PasswordController extends Controller
+class PasswordController extends MainController
 {
     /*
     |--------------------------------------------------------------------------
@@ -27,6 +27,8 @@ class PasswordController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
+       
         $this->middleware('guest');
     }
 }
