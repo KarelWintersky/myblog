@@ -1,18 +1,21 @@
 @extends('main.app')
 {{--*/
-    $description = 'Блог начинающего backend разработчика.';
-    if(!empty($articles[])){
-        $title = $category->name;
-        $keywords = 'категория,'.$category->name;
-        $description .= 'Все статьи категории '.$category->name;
-    }else if(!empty($tag)){
-        $title = $tag->name;
-        $keywords = 'тег,'.$tag->name;
-        $description .= ' Все статьи помеченные тегом '.$tag->name;
-    }else{
-        $title = 'Главная';
-        $keywords = 'главная';
-        $description .= ' Главная. Все статьи';
+    $description = 'Блог начинающего backend разработчика.';    
+    switch(Request::route()->getName()){
+        case 'category':
+            $title = 'ytry';//$category->name;
+            $keywords = 'категория,';//.$category->name;
+            $description .= 'Все статьи категории ';//.$category->name;
+            break;
+        case 'tag':
+            $title = '';//$tag->name;
+            $keywords = 'тег,';//.$tag->name;
+            $description .= ' Все статьи помеченные тегом ';//.$tag->name;
+            break;
+        case 'home':
+            $title = 'Главная';
+            $keywords = 'главная';
+            $description .= ' Главная. Все статьи';
     }
 /*--}}
 @section('title')
@@ -25,16 +28,15 @@
     <meta name="description" content="{{$description}}">
 @endsection
 
-@section('bread')
+<!--@section('bread')
     @if(!empty($category))
         {!! Breadcrumbs::render('category', $category) !!}
     @elseif(!empty($tag))
         {!! Breadcrumbs::render('tag', $tag) !!}
     @endif
-@endsection
+@endsection-->
 
 @section('content')
-    {{dd($articles)}}
     @foreach($articles as $article)
         <article>
             <header>

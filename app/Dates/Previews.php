@@ -28,14 +28,13 @@ class Previews extends Dates implements InterfaceDates{
             $id.':'.$this->page,
             function() use ($id){
                 $category = new Categories();
-                $articles = $category -> getById($id)
+                return $category -> getById($id)
                     -> first()
                     -> articles()
                     -> published()
                     -> orderByParam()
                     -> with('tags','category')
                     -> paginate($this->countPage);
-                return $this->createLengthAwarePaginator($articles);
             }
         );
     }
@@ -46,11 +45,10 @@ class Previews extends Dates implements InterfaceDates{
             $this->page,
             function(){
                 $articles = new Articles();
-                $articles->published()
+                return $articles->published()
                      ->orderByParam()
                      ->with('tags','category')
                      ->paginate($this->countPage);
-                return $this->createLengthAwarePaginator($articles);
             }
         );
     }
@@ -70,8 +68,8 @@ class Previews extends Dates implements InterfaceDates{
     // формируем массив данных для кэширования превью,
     // чтобы не кэшировать лишнее, берем только используемые параметры
     private function createArrPreviews($articles){
+        dd($articles);
         $arr_by_cash = [];
-        //dd($articles);
         foreach($articles->items() as $article){
             $arr_tmp = [
                 'id'            =>  $article->id,
