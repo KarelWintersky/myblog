@@ -42,16 +42,27 @@ class Articles extends Model
     }
 
 
+
+
     //Отношение * к 1 (Категории)
     public function category()
     {
         return $this->belongsTo('App\Model\Categories','categories_id','id');
     }
+    public function withCategory(){
+        $this->with('category');
+    }
+
     //Отношение * ко * (Cтатья * <- 1 ГруппаТегов 1 -> * Название тегов)
     public function tags()
     {
         return $this->belongsToMany('App\Model\Tags','tags_gr','articles_id','tags_id');
     }
+    public function withTags(){
+        $this->with('tags');
+    }
+
+
     //Отношение 1 к * (коментарии)
     public function comments()
     {

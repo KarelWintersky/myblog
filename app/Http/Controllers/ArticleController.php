@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dates\Previews;
 use App\Model\Articles;
 use App\Model\Categories;
 use App\Model\Comments;
@@ -49,18 +50,16 @@ class ArticleController extends MainController
         return $this->preViews($articlesByTag);
     }
     //Получить все статьи определенной категории
-    public function getByCategory($name,Categories $categories){
-        //Получаем категорию
-        $category = $categories->getCategoryByName($name);
-        //Записываем данные категории в передаваемый параметр
-        $this->data['category'] = $category;
-        //Получаем все статьи определённой категории
-        $articlesByCategory = $category->getArticlesByCondition();
-        return $this->preViews($articlesByCategory);
+    public function getByCategory($curl){
+        $id = $this->getIdFromCurl($curl);
+        $prev = new Previews();
+        $this->data['articles'] = $prev->getAllByCat($id);
+        return view('articles',$this->data);
     }
-    //Главная страница, выводим все опубликованные статьи
-    public function index(Articles $article){
-        $articlesAll = $article->getAllArticles();
-        return $this->preViews($articlesAll);
+    //Главная страница, выводим все превью опубликованных статей
+    public function index(){
+        $prev = new Previews();
+        $this->data['articles'] = $prev->getAll();
+        return view('articles',$this->data);
     }
 }

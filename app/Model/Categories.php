@@ -36,6 +36,9 @@ class Categories extends Model
 
 
     //scope
+    public function scopeGetById($query,$id){
+        $query->where(['id'=>$id]);
+    }
     public function scopeGetCategory($query,$name){
         $query->where(['name'=>$name]);
     }

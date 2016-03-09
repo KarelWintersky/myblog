@@ -61,6 +61,16 @@ return [
             'connection' => 'default',
         ],
 
+
+        'prevAllCat' => [
+            'driver' => 'file',
+            'path'   => storage_path('framework/cache/prevAllCat'),
+        ],
+       'prevCat' => [
+            'driver' => 'file',
+            'path'   => storage_path('framework/cache/prevCat'),
+        ]
+
     ],
 
     /*
