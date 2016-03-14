@@ -23,17 +23,14 @@ class Articles extends Model
     public function getAllArticles(){
         return $this->published()->orderByParam();
     }
-    //Получаем опубликованную статью по ID
-    public function getArticleByCurl($curl){
-        return $this->published()->GetArticleByCurl($curl)->orderByParam()->get();
-    }
+
     //Получить все статьи определенной категории
     public function getArticleByCategory($name){
-        return $this->published()->getCategory($name)->orderByParam()->get();
+        return $this->published()->getCategory($name)->orderByParam();
     }
     //Получить все статьи определенного тега
     public function getArticleByTag($name){
-        return $this->published()->getCategory($name)->orderByParam()->get();
+        return $this->published()->getCategory($name)->orderByParam();
     }
     //Получить опубликованные коментарии определённой статьи (Таким способом можно сделать например фильтр)
     //2й published уже метод класса мадели Comments
@@ -71,8 +68,8 @@ class Articles extends Model
 
 
     //scope
-    public function scopeGetArticleByCurl($query,$curl){
-        $query->where(['curl'=>$curl]);
+    public function scopeGetById($query,$id){
+        $query->where(['id'=>$id]);
     }
     public function scopePublished($query){
         $query->where(['active'=>1]);

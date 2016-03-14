@@ -15,7 +15,10 @@ class Categories extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 128);
+            $table->string('curl',50);
             $table->integer('weight');
+            $table->string('meta_description');
+            $table->string('meta_keywords');
             $table->timestamps();
             $table->unique(['name']);
         });

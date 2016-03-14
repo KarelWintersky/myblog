@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Dates\Subsidiary;
+namespace App\Data\Subsidiary;
 
-interface InterfaceDates{
+interface InterfaceData{
 
     public function clearAllCash();
 

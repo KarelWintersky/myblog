@@ -1,11 +1,10 @@
 <aside>
     <h2>Категории</h2>
     <ul class="nav nav-pills nav-stacked">
-        {{dd(Request::route()->getName())}}
-        @foreach($categories as $item)
-      <li {{Route::current()->parameters()['name']==$item->name.'-'.$item->id ? 'class=active':''}}>
-          <a href="{{route('category',['curl'=>$item->name.'-'.$item->id])}}">
-              {!!$item->name!!} ({{$item->countArticle}})
+      @foreach($categories as $category)
+      <li {{Request::route()->getName()=='category' ? ($data['category']['id']==$category['id']?'class=active':'') :''}}>
+          <a href="{{route('category',['curl'=>$category['curl'].'-'.$category['id']])}}">
+              {!!$category['name']!!} ({{$category['count_article']}})
           </a>
       </li>
     @endforeach

@@ -59,10 +59,18 @@ class TagsTableSeeder extends Seeder {
     {
         DB::table('tags')->delete();
         DB::table('tags')->insert([
-            ['name' => 'first-tag'  ],
-            ['name' => 'second-tag' ],
-            ['name' => 'third-tag'  ],
-            ['name' => 'fourth-tag' ],
+            [   'name' => 'first_tag',
+                'curl' => 'first-tag',
+            ],
+            [   'name' => 'second_tag',
+                'curl' => 'second-tag',
+            ],
+            [   'name' => 'third_tag',
+                'curl' => 'third-tag',
+            ],
+            [   'name' => 'fourth_tag',
+                'curl' => 'fourth-tag',
+            ],
         ]);
     }
 }
@@ -73,10 +81,10 @@ class CategoriesTableSeeder extends Seeder {
     {
         DB::table('categories')->delete();
         DB::table('categories')->insert([
-            ['name' => 'first-category',     'weight' => 10  ],
-            ['name' => 'second-category',    'weight' => 20  ],
-            ['name' => 'third-category',     'weight' => 30  ],
-            ['name' => 'fourth-category',    'weight' => 40  ],
+            ['name' => 'first category',  'curl' => 'first-category',  'weight' => 10  ],
+            ['name' => 'second category', 'curl' => 'second-category', 'weight' => 20  ],
+            ['name' => 'third category',  'curl' => 'third-category',  'weight' => 30  ],
+            ['name' => 'fourth category', 'curl' => 'fourth-category', 'weight' => 40  ],
         ]);
     }
 }

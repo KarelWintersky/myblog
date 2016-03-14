@@ -38,4 +38,11 @@ class Tags extends Model
     public function scopeGetTag($query,$name){
         $query->where(['name'=>$name]);
     }
+    //scope
+    public function scopeGetByTag($query,$name){
+        $query->where(['name'=>$name]);
+    }
+    public function scopeGetById($query,$id){
+        $query->where(['id' => $id]);
+    }
 }

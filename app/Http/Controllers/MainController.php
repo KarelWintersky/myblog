@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Dates\Previews;
-use App\Model\Menu;
-use App\Model\Categories;
-use Illuminate\Http\Request;
-
+use App\Data\Aside;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 class MainController extends Controller
 {
@@ -16,18 +11,11 @@ class MainController extends Controller
 
     //Формируем шапку лого, слайдер и прочее
     public function __construct()
-    {   $cat_cl = new Categories;
-        $categories = $cat_cl->getAllCategory();
-        foreach ($categories as $category){
-            //Получаем кол-во новостей в каждой категории
-            //И добавляем в новый атрибут
-            $category->countArticle = $category->getArticlesByCondition()->count();
-        }   
+    {   $cat_cl = new Aside();
         //Подключаем навигацию по категориям во все представления
-        view()->share('categories', $categories);
+        view()->share('categories', $cat_cl -> getCategoryNavigate());
         //Подключаем основное меню во все представления
-        $menu = new Menu;
-        view()->share('menu', $menu->getMenu());
+        view()->share('menu', $cat_cl->getMainNavigate());
     }
 
     // да, да, можно было расширить Request,

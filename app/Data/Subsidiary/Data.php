@@ -1,8 +1,8 @@
 <?php
-namespace App\Dates\Subsidiary;
+namespace App\Data\Subsidiary;
 use Illuminate\Http\Request;
 
-class Dates{
+class Data{
     protected $cashOn;      //Кэшируем?
     protected $countPage;   //Кол-во статей на странице
     protected $page;        //Номер страницы

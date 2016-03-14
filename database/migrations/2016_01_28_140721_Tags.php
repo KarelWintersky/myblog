@@ -15,6 +15,9 @@ class Tags extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',128); //название
+            $table->string('curl',50);
+            $table->string('meta_description');
+            $table->string('meta_keywords');
             $table->timestamps();
             $table->unique(['name']);
         });

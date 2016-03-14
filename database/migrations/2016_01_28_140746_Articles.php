@@ -14,7 +14,7 @@ class Articles extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('curl');
+            $table->string('curl',50);
             $table->boolean('active');            
             $table->string('title');
             $table->string('preview');

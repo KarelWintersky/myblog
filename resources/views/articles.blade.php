@@ -1,43 +1,27 @@
 @extends('main.app')
-{{--*/
-    $description = 'Блог начинающего backend разработчика.';    
-    switch(Request::route()->getName()){
-        case 'category':
-            $title = 'ytry';//$category->name;
-            $keywords = 'категория,';//.$category->name;
-            $description .= 'Все статьи категории ';//.$category->name;
-            break;
-        case 'tag':
-            $title = '';//$tag->name;
-            $keywords = 'тег,';//.$tag->name;
-            $description .= ' Все статьи помеченные тегом ';//.$tag->name;
-            break;
-        case 'home':
-            $title = 'Главная';
-            $keywords = 'главная';
-            $description .= ' Главная. Все статьи';
-    }
-/*--}}
+
 @section('title')
-    <title>{{$title}}</title>
-@endsection
-@section('keywords')
-    <meta name="keywords" content="блог,программирование,{{$keywords}}">
-@endsection
-@section('description')
-    <meta name="description" content="{{$description}}">
+    <title>{{$data['title']}}</title>
 @endsection
 
-<!--@section('bread')
+@section('keywords')
+    <meta name="keywords" content="{{$data['keywords']}}">
+@endsection
+
+@section('description')
+    <meta name="description" content="{{$data['description']}}">
+@endsection
+
+@section('bread')
     @if(!empty($category))
         {!! Breadcrumbs::render('category', $category) !!}
     @elseif(!empty($tag))
         {!! Breadcrumbs::render('tag', $tag) !!}
     @endif
-@endsection-->
+@endsection
 
 @section('content')
-    @foreach($articles as $article)
+    @foreach($data['articles'] as $article)
         <article>
             <header>
             <h2><a href="{{route('article',['curl'=>$article['curl'].'-'.$article['id']])}}">{{$article['curl']}}</a></h2>
@@ -63,5 +47,5 @@
         </article>
     @endforeach
     {{--пагинация--}}
-    {{$articles->render()}}
+    {{$data->render()}}
 @endsection

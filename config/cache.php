@@ -62,13 +62,30 @@ return [
         ],
 
 
-        'prevAllCat' => [
+
+        'prevAll' => [
             'driver' => 'file',
-            'path'   => storage_path('framework/cache/prevAllCat'),
+            'path'   => storage_path('framework/cache/prevAll'),
         ],
-       'prevCat' => [
+        'prevCat' => [
             'driver' => 'file',
             'path'   => storage_path('framework/cache/prevCat'),
+        ],
+        'prevTag' => [
+            'driver' => 'file',
+            'path'   => storage_path('framework/cache/prevTag'),
+        ],
+        'aside' => [
+            'driver' => 'file',
+            'path'   => storage_path('framework/cache/aside'),
+        ],
+        'article' => [
+            'driver' => 'file',
+            'path'   => storage_path('framework/cache/article'),
+        ],
+        'comments' => [
+            'driver' => 'file',
+            'path'   => storage_path('framework/cache/comments'),
         ]
 
     ],
