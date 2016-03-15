@@ -25,6 +25,12 @@ class Comments extends Model
     public function scopePublished($query){
         $query->where(['active'=>1]);
     }
+    public function scopeCommentsByArticleId($query,$id){
+        $query->where(['articles_id'=>$id]);
+    }
+    public function scopeOrderByParam($query){
+        $query->orderBy('created_at');
+    }
 
     //Так как в теории/когда-либо наша база может изменить структуру
     //То добавим функцию, которая бы преобразовывала данные к нужному формату

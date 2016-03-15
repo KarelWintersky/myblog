@@ -13,11 +13,15 @@
 @endsection
 
 @section('bread')
-    @if(!empty($category))
-        {!! Breadcrumbs::render('category', $category) !!}
-    @elseif(!empty($tag))
-        {!! Breadcrumbs::render('tag', $tag) !!}
-    @endif
+    @switch(Request::route()->getName())
+    @case('tag')
+        {!! Breadcrumbs::render('tag', $data['tag']) !!}
+        @break
+    @case('category')
+        {!! Breadcrumbs::render('category', $data['category']) !!}
+        @break
+    @default
+    @endswitch
 @endsection
 
 @section('content')
@@ -29,7 +33,7 @@
             <aside> 
                 <p>tags
                     @foreach($article['tags'] as $tag)
-                        | <a href="{{route('tag',['curl'=>$tag['name'].'-'.$tag['id']])}}">{{$tag['name']}}</a>
+                        | <a href="{{route('tag',['curl'=>$tag['curl'].'-'.$tag['id']])}}">{{$tag['name']}}</a>
                     @endforeach
                 </p>
             </aside>
@@ -40,7 +44,7 @@
             </p>
             {!!$article['preview']!!}
             <p class="text-right">
-                <a href="/article/{{$article['curl']}}">
+                <a href="{{route('article',['curl'=>$article['curl'].'-'.$article['id']])}}">
                     далее...
                 </a>
             </p>

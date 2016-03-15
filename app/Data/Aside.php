@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\Cache;
 
 class Aside extends Data implements InterfaceData
 {
-    //store:[prevAll] Ключ:[страница]
-    //store:[prevCat]    Ключ:[категория:страница]
-    //store:[prevTag]    Ключ:[тег:страница]
-
     public function clearAllCash()
     {
 
@@ -33,7 +29,7 @@ class Aside extends Data implements InterfaceData
                 $cat_cl = new Categories();
                 $categories = $cat_cl->getAllCategory();
                 foreach ($categories as $key => $category){
-                    $date[$key]['id'] = $category->id;
+                    $date[$key]['id']   = $category->id;
                     $date[$key]['name'] = $category->name;
                     $date[$key]['curl'] = $category->curl;
                     //Получаем кол-во новостей в каждой категории

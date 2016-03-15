@@ -1,6 +1,6 @@
 <?php
-//Для формирования шапки лого, слайдер и прочее
-
+//Статьи
+//Сохраняем / кэшируем только то, что в последствии используем 
 namespace App\Data;
 
 use App\Data\Subsidiary\Data;
@@ -10,13 +10,9 @@ use Illuminate\Support\Facades\Cache;
 
 class Article extends Data implements InterfaceData
 {
-    //store:[prevAll]    Ключ:[страница]
-    //store:[prevCat]    Ключ:[категория:страница]
-    //store:[prevTag]    Ключ:[тег:страница]
-
     public function clearAllCash()
     {
-
+                
     }
 
     public function clearCash($condition = [])
@@ -37,11 +33,13 @@ class Article extends Data implements InterfaceData
                 $data = [
                     'id'            =>  $article->id,
                     'title'         =>  $article->title,
+                    'curl'          =>  $article->curl,
                     'keywords'      =>  $article->meta_keywords,
                     'description'   =>  $article->meta_description,
                     'content'       =>  $article->content,
                     'created_at'    =>  $article->created_at,
                     'updated_at'    =>  $article->updated_at,
+                    'is_comments'   =>  $article->comments_enable,
                     'category'      =>  [
                         'id'    => $article->category->id,
                         'name'  => $article->category->name,
@@ -52,6 +50,7 @@ class Article extends Data implements InterfaceData
                     $data['tags'][] = [
                         'id'    =>  $tag->id,
                         'name'  =>  $tag->name,
+                        'curl'  =>  $tag->curl,
                     ];
                 }
                 return $data;

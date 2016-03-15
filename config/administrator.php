@@ -66,6 +66,7 @@ return array(
 	 *	)
 	 */
 	'menu' => array(
+                'site' => array('settings.site'),
 		'users',
 		'menus',
 		'categories',
@@ -106,7 +107,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'home_page' => '',
+	'home_page' => 'settings.site',
 
 	/**
 	 * The route to which the user will be taken when they click the "back to site" button
@@ -120,7 +121,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'login_path' => 'auth/login',
+	'login_path' => '/login',
 
 	/**
 	 * The logout path is the path where Administrator will send the user when they click the logout link
@@ -150,5 +151,4 @@ return array(
 	 * @type array
 	 */
 	'locales' => array(),
-
 );

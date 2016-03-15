@@ -9,8 +9,8 @@
         "laravel/framework": "5.2.*",
         "barryvdh/laravel-debugbar": "^2.1",
         "barryvdh/laravel-ide-helper": "^2.1",
-        "frozennode/administrator": " 5.*",
         "laravelcollective/html": "^5.2",
+        "frozennode/administrator": "5.*",
         "davejamesmiller/laravel-breadcrumbs": "^3.0"
     },
     "require-dev": {

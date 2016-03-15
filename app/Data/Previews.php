@@ -165,6 +165,7 @@ class Previews extends Data implements InterfaceData{
                 $arr_tmp['tags'][] = [
                     'id'    =>  $tag->id,
                     'name'  =>  $tag->name,
+                    'curl'  =>  $tag->curl,
                 ];
             }
             $arr_by_cash[] = $arr_tmp;

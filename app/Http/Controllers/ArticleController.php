@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Data\Previews;
-use App\Model\Articles;
-use App\Http\Requests;
+use App\Data\Article;
+use App\Data\Comments;
 
 class ArticleController extends MainController
 {
     public function getArticle($curl){
         $id = $this->getIdFromCurl($curl);
         $article = new Article();
-        $this->data['data'] = $article->getArticle($id);
+        $this->data['article'] = $article->getArticle($id);
+        $this->data['article']['comments'] = [];
+        //Включены ли комментарии
+        if($this->data['article']['is_comments']){
+            $comments = new Comments;
+            $this->data['article']['comments'] = $comments->getCommentsByIdArticle($id);  
+        }
         return view('article',$this->data);
     }
 

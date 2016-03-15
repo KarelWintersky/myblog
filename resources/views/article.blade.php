@@ -1,15 +1,15 @@
 @extends('main.app')
 
 @section('title')
-    <title>{{$article->title}}</title>
+    <title>{{$article['title']}}</title>
 @endsection
 
 @section('keywords')
-    <meta name="keywords" content="{{$article->meta_keywords}}">
+    <meta name="keywords" content="{{$article['keywords']}}">
 @endsection
 
 @section('description')
-    <meta name="description" content="{{$article->meta_description}}">
+    <meta name="description" content="{{$article['description']}}">
 @endsection
 
 @section('head')
@@ -24,37 +24,37 @@
 
     <article>
         </header>
-            <h2>{{$article->title}}</h2>
+            <h2>{{$article['title']}}</h2>
         </header>
         <aside> 
             <p>tags
-                @foreach($article->tags as $tag)
-                    | <a href="/tag/{{$tag->name}}">{{$tag->name}}</a>
+                @foreach($article['tags'] as $tag)
+                    | <a href="{{route('tag',['curl'=>$tag['curl'].'-'.$tag['id']])}}">{{$tag['name']}}</a>
                 @endforeach
             </p>
         </aside>
         
         <p>Дата публикации:
-            <time pubdate datetime={{$article->updated_at->format('Y-m-d\TH:j:s')}}"2012-12-23T13:44:55">
-                {{$article->created_at->format('d.m.Y H:j:s')}}
+            <time pubdate datetime={{$article['updated_at']->format('Y-m-d\TH:j:s')}}>
+                {{$article['updated_at']->format('d.m.Y H:j:s')}}
             </time>
         </p>
         
-        {!!$article->content!!}
+        {!!$article['content']!!}
         
-        @if($article->comments->first())
+        @if($article['comments']!=[])
             <section id="comments">
                 <h3>Коментарии:</h3>
-                    @foreach($article->comments as $comment)
-                        @if($comment->answer != 1)
+                    @foreach($article['comments'] as $comment)
+                        @if($comment['answer'] != 1)
                             <div class="media">
                                 <a class="pull-left" href="#">
                                     <img class="media-object" src="/images/img_64_64.png">
                                 </a>
 
                                     <div class="media-body">
-                                        <h4 class="media-heading">{{$comment->user}}</h4>
-                                        {{$comment->message}}                          
+                                        <h4 class="media-heading">{{$comment['user']}}</h4>
+                                        {{$comment['message']}}                          
                                     </div>
                             </div>
                         @else
@@ -65,7 +65,7 @@
                                 </a>
                                 <div class="media-body">
                                     <h4 class="media-heading">Хозяин блога</h4>
-                                    {!!$comment->message!!}                          
+                                    {!!$comment['message']!!}                          
                                 </div>
                             </div>
                         @endif
@@ -73,7 +73,7 @@
             </section>
         @endif
        
-        @if($article->comments_enable)
+        @if($article['is_comments'])
         <aside>
             <h3>Добавить коментарий:</h3>
             
@@ -83,7 +83,7 @@
                 'role'      =>  'form',
             ])}}            
             
-            {{Form::hidden('article_id',$article->id)}}
+            {{Form::hidden('article_id',$article['id'])}}
             
             <div class="form-group {{$errors->has()?($errors->has('user')?'has-error':'has-success').' has-feedback':''}}">
                 {!!Form::label( 'user', 
