@@ -84,6 +84,12 @@ return [
             'name_field' => 'name',
         ]
     ],
+    
+    'rules' => [
+        'curl' => 'required',
+        'title' => 'required',
+    ],
+    
     //Ширина области справа
     'form_width' => 430,
 ];

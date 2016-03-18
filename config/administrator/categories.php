@@ -30,5 +30,10 @@ return [
             'type' => 'text',
         ],
     ],
-
+    
+    'rules' => [
+        'name'   => 'required|unique:categories,name',
+        'curl'   => 'required|unique:categories,curl',
+        'weight' => 'required|integer',
+    ],
 ];

@@ -15,25 +15,25 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
         
         $this->call(UserTableSeeder::class);
-        $this->command->info('Аdmin was added: name:admin; password:123456; email:admin@gmail.com;');
+        $this->command->info('Аdmin added: name:admin; password:admin; email:admin@gmail.com;');
         
         $this->call(TagsTableSeeder::class);
-        $this->command->info('Tags where added;');
+        $this->command->info('Tags added;');
         
         $this->call(CategoriesTableSeeder::class);
-        $this->command->info('Categories where added;');
+        $this->command->info('Categories added;');
         
         $this->call(MenuTableSeeder::class);
-        $this->command->info('Menu was added;');
+        $this->command->info('Menu added;');
         
         $this->call(ArticlesTableSeeder::class);
-        $this->command->info('Articles where added;');
+        $this->command->info('Articles added;');
         
         $this->call(TagsGrTableSeeder::class);
-        $this->command->info('Tags where added;');  
+        $this->command->info('Tags added;');  
         
         $this->call(CommentsTableSeeder::class);
-        $this->command->info('Comments where added;'); 
+        $this->command->info('Comments added;'); 
         
         Model::reguard();
     }
@@ -109,7 +109,8 @@ class ArticlesTableSeeder extends Seeder {
     public function run()
     {
         DB::table('articles')->delete();        
-        $categories = DB::table('categories')->get(); 
+        $categories = DB::table('categories')->get();
+        $time = Carbon\Carbon::now();
         
         //Рыбные текста:
         $paragraph_1 = '<p class="text-justify">Каждый веб-разработчик знает, что такое текст-«рыба». Текст этот, 
@@ -132,8 +133,8 @@ class ArticlesTableSeeder extends Seeder {
             существует несколько вариантов Lorem ipsum, кроме того, есть специальные генераторы, создающие собственные 
             варианты текста на основе оригинального трактата, благодаря чему появляется возможность получить более длинный 
             неповторяющийся набор слов.</p>';
-
         
+        //Обычные статьи
         DB::table('articles')->insert([
             [   'curl'      => 'My-first-article', 
                 'active'    => 1, 
@@ -144,6 +145,8 @@ class ArticlesTableSeeder extends Seeder {
                 'meta_keywords'    => 'meta_keywords',
                 'categories_id'    => $categories[0]->id,
                 'comments_enable'  => 1,
+                'created_at' => $time,
+                'updated_at' => $time,
             ],
             [   'curl'      => 'My-second-article', 
                 'active'    => 1, 
@@ -154,6 +157,8 @@ class ArticlesTableSeeder extends Seeder {
                 'meta_keywords'    => 'meta_keywords',
                 'categories_id'    => $categories[1]->id,
                 'comments_enable'  => 1,
+                'created_at' => $time,
+                'updated_at' => $time,
             ],
             [   'curl'      => 'My-third-article', 
                 'active'    => 1, 
@@ -164,6 +169,8 @@ class ArticlesTableSeeder extends Seeder {
                 'meta_keywords'    => 'meta_keywords',
                 'categories_id'    => $categories[1]->id,
                 'comments_enable'  => 0,
+                'created_at' => $time,
+                'updated_at' => $time,
             ],
         ]);
     }

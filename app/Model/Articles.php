@@ -55,15 +55,15 @@ class Articles extends Model
     {
         return $this->belongsToMany('App\Model\Tags','tags_gr','articles_id','tags_id');
     }
-    public function withTags(){
-        $this->with('tags');
-    }
 
-
-    //Отношение 1 к * (коментарии)
+    //Отношение 1 к * (коментарии, картинки)
     public function comments()
     {
-        return $this->hasMany('App\Model\Comments','articles_id','id')->published();
+        return $this->hasMany('App\Model\Comments','articles_id','id');
+    }
+    public function images()
+    {
+        return $this->hasMany('App\Model\Images','articles_id','id');
     }
 
 

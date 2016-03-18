@@ -25,10 +25,10 @@ return [
         'meta_keywords' => [
             'type' => 'text',
         ],
-        /*'articles' => [
-            'type' => 'relationship',
-            'title' => 'Категории',
-            'name_field' => 'title',
-        ]*/
+    ],
+    
+    'rules' => [
+        'name' => 'required|unique:tag,name',
+        'curl' => 'required|unique:tag,curl',
     ],
 ];

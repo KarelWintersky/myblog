@@ -14,5 +14,17 @@ return [
         'email' => [
             'type' => 'text',
         ],
+        'name' => [
+            'type' => 'text',
+        ],
+        'password' => [
+            'type' => 'password',
+        ]
+    ],
+    
+    'rules' => [
+        'email'     => 'required|email|unique:users,email',
+        'name'      => 'required|unique:users,name',
+        'password'  => 'required',
     ],
 ];

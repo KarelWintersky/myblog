@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Hash;
 
 class User extends Authenticatable
 {
@@ -23,4 +24,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    // Установка поля пассворд
+    public function setPasswordAttribute($value) {
+        $this->attributes['password'] = empty($value)
+            ? $this->password
+            : Hash::make($value);	
+    }
 }

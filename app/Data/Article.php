@@ -29,7 +29,7 @@ class Article extends Data implements InterfaceData
                     -> published()
                     -> getById($id)
                     -> with('tags','category')
-                    -> first();
+                    -> first();                
                 $data = [
                     'id'            =>  $article->id,
                     'title'         =>  $article->title,

@@ -66,14 +66,13 @@ return array(
 	 *	)
 	 */
 	'menu' => array(
-                'site' => array('settings.site'),
 		'users',
 		'menus',
 		'categories',
 		'tags',
 		'articles',
 		'comments',
-		'slides'
+		'images'
 	),
 
 	/**
