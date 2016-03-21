@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Model\Comments;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class CommentsController extends Controller
+class CommentsController extends MainController
 {
     public function save(Request $request, Comments $comments)
     {

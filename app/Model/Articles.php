@@ -3,10 +3,26 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Articles extends Model
 {
     protected $table="articles";
+    
+    use SearchableTrait;
+    
+    protected $searchable = [
+        'columns' => [
+            'articles.title'   => 10,
+            'articles.preview' => 10,
+            'articles.content' => 10,
+            'categories.name'  => 10,
+        ],
+        'joins' => [
+            'categories' => ['articles.categories_id','categories.id'],
+        ],
+    ];    
+    
     protected $fillable = [
         'curl',
         'active',

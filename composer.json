@@ -11,7 +11,8 @@
         "barryvdh/laravel-ide-helper": "^2.1",
         "laravelcollective/html": "^5.2",
         "frozennode/administrator": "5.*",
-        "davejamesmiller/laravel-breadcrumbs": "^3.0"
+        "davejamesmiller/laravel-breadcrumbs": "^3.0",
+        "nicolaslopezj/searchable": "1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

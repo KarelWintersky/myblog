@@ -29,8 +29,16 @@
                 </ul>
             </li>
         </ul>
+        {{route('category',['curl'=>$category['curl'].'-'.$category['id']])}}
         <div class="col-sm-3 col-md-3 pull-left">
-            <form class="navbar-form" role="search">
+            {{Form::open([
+                'id'        =>  'search_form',
+                'action'    =>  'SearchController@search',
+                'role'      =>  'form',
+                'class'     =>  'navbar-form',
+                'method'    =>  'GET'
+            ])}}     
+            <!--form class="navbar-form" role="search"-->
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Пой и щи" name="q">
                     <div class="input-group-btn">

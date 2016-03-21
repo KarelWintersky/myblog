@@ -123,7 +123,6 @@
                 @endif
             </div>
             
-            
             <div class="form-group {{$errors->has()?($errors->has('message')?'has-error':'has-success').' has-feedback':''}}">
                 {!!Form::label( 'message', 
                                 ($errors->has('message')?implode('<br />',$errors->get('message')):'Message'),
@@ -141,10 +140,6 @@
                     @endif
                 @endif
             </div>
-            
-            <!--div class="form-group">
-                <div class="g-recaptcha" data-sitekey="6LfadRcTAAAAAEmsyAyhnjOdVa3oQDxPFW2mW2jp"></div>
-            </div-->    
             
             <div style="display:none;">
                 {{Form::text('check_bot')}}

@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Data\Aside;
-use App\Http\Requests;
 
 class MainController extends Controller
 {
@@ -13,6 +11,7 @@ class MainController extends Controller
     public function __construct()
     {   $cat_cl = new Aside();
         //Подключаем навигацию по категориям во все представления
+        //Вариант 2: можно было поместить эти данные в ассициативный массив $data
         view()->share('categories', $cat_cl -> getCategoryNavigate());
         //Подключаем основное меню во все представления
         view()->share('menu', $cat_cl->getMainNavigate());
