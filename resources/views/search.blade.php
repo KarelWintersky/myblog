@@ -13,8 +13,7 @@
 @endsection
 
 @section('content')
-   
-    @if(!isset($articles))
+    @if(empty($articles->first()))
         <h2>По запросу "{{$query}}" совсем ничего не найдено( Мне очень жаль...</h2>
     @else
         <h2>По запросу "{{$query}}" что-то найдено</h2>

@@ -28,7 +28,7 @@
     @foreach($data['articles'] as $article)
         <article>
             <header>
-            <h2><a href="{{route('article',['curl'=>$article['curl'].'-'.$article['id']])}}">{{$article['curl']}}</a></h2>
+            <h2><a href="{{route('article',['curl'=>$article['curl'].'-'.$article['id']])}}">{{$article['title']}}</a></h2>
             </header>
             <aside> 
                 <p>tags

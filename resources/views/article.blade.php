@@ -79,7 +79,7 @@
             
             {{Form::open([
                 'id'        =>  'comment_form',
-                'action'    =>  'CommentsController@save',
+                'route'     =>  'comment_save',
                 'role'      =>  'form',
             ])}}            
             

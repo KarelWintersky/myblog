@@ -12,12 +12,8 @@
     </div>
     
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <!--ul class="nav navbar-nav">
-            <li class="active"><a href="#">О нас</a></li> 
-        </ul-->
-        
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">О нас</a></li>
+            <li><a href="#">О нас</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Категории<b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -29,23 +25,27 @@
                 </ul>
             </li>
         </ul>
-        {{route('category',['curl'=>$category['curl'].'-'.$category['id']])}}
         <div class="col-sm-3 col-md-3 pull-left">
             {{Form::open([
                 'id'        =>  'search_form',
-                'action'    =>  'SearchController@search',
+                'route'     =>  'search',
                 'role'      =>  'form',
                 'class'     =>  'navbar-form',
                 'method'    =>  'GET'
             ])}}     
             <!--form class="navbar-form" role="search"-->
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Пой и щи" name="q">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    {{Form::text('q',null,[
+                        'class'         => 'form-control',
+                        'placeholder'   => 'Пой и щи'
+                    ])}}
+                    <div class="input-group-btn">                        
+                        {{Form::button('<i class="glyphicon glyphicon-search"></i>',[
+                            'class' => 'btn btn-default',        
+                            'type'  => "submit",
+                        ])}}
                     </div>
                 </div>
-            </form>
         </div>        
         
         <!-- Right Side Of Navbar -->

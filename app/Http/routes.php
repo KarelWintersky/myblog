@@ -7,7 +7,7 @@ Route::group(['middleware' => 'web'], function () {
     
     Route::get('search',['as'=>'search',  'uses'=>'SearchController@search']);
 
-    Route::post('comments','CommentsController@save');
+    Route::post('comments',['as'=>'comment_save','uses'=>'CommentsController@save']);
 
     Route::auth();
     // Registration Routes...
