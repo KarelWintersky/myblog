@@ -1,7 +1,6 @@
 <?php
 namespace App\Data;
 
-use App\Data\Subsidiary\Data;
 use App\Data\Subsidiary\InterfaceData;
 use App\Model\Articles;
 use App\Model\Categories;
@@ -10,17 +9,26 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
-class Previews extends Data implements InterfaceData{
+class Previews implements InterfaceData{
     //store:[prevAll]    Ключ:[страница]
     //store:[prevCat]    Ключ:[категория:страница]
     //store:[prevTag]    Ключ:[тег:страница]
 
-    public function clearAllCash(){
-
+    protected $countPage;   //Кол-во статей на странице
+    protected $page;        //Номер страницы
+    
+    public function __construct()
+    {
+        //Кол-во статей на странице
+        $this->countPage = 2;
+        //Номер страницы
+        $this->page = Request::capture()->input('page');
     }
-
-    public function clearCash($condition = []){
-
+    
+    public function clear(){
+        Cache::store('prevTag')->flush();
+        Cache::store('prevCat')->flush();
+        Cache::store('prevAll')->flush();
     }
 
     //Возвращает превьюхи опред. тегов
@@ -74,7 +82,7 @@ class Previews extends Data implements InterfaceData{
             function() use ($id){
                 $categories = new Categories();
                 $category = $categories -> getById($id) -> first();
-
+                
                 //Для хлебных крошек
                 $items['category'] = [
                     'id' => $category->id,

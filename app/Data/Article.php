@@ -3,25 +3,25 @@
 //Сохраняем / кэшируем только то, что в последствии используем 
 namespace App\Data;
 
-use App\Data\Subsidiary\Data;
 use App\Data\Subsidiary\InterfaceData;
 use App\Model\Articles;
 use Illuminate\Support\Facades\Cache;
 
-class Article extends Data implements InterfaceData
+class Article implements InterfaceData
 {
-    public function clearAllCash()
+    protected $store = 'article';
+
+    public function clear()
     {
-                
+        Cache::store($this->store)->flush();
     }
-
-    public function clearCash($condition = [])
-    {
-
+    
+    public function clearById($id){
+        Cache::store($this->store)->forget($id);
     }
-
+    
     public function getArticle($id){
-        return Cache::store('article')->rememberForever(
+        return Cache::store($this->store)->rememberForever(
             $id,
             function() use ($id){
                 $article_model = new Articles();

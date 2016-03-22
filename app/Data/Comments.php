@@ -3,25 +3,25 @@
 //Сохраняем / кэшируем только то, что в последствии используем 
 namespace App\Data;
 
-use App\Data\Subsidiary\Data;
 use App\Data\Subsidiary\InterfaceData;
 use App\Model\Comments as CommentsModel;
 use Illuminate\Support\Facades\Cache;
 
-class Comments extends Data implements InterfaceData
+class Comments implements InterfaceData
 {
-    public function clearAllCash()
-    {
-        
+    protected $store = 'comments';
+    
+    public function clear(){
+        Cache::store($this->store)->flush();
     }
-
-    public function clearCash($condition = [])
-    {
-
+    
+    //$id - id статьи
+    public function clearByIdArticle($id){
+        Cache::store($this->store)->forget($id);
     }
 
     public function getCommentsByIdArticle($id){
-        return Cache::store('comments')->rememberForever(
+        return Cache::store($this->store)->rememberForever(
             $id,
             function() use ($id){
                 $data = [];

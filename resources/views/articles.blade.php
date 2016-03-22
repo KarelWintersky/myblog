@@ -30,13 +30,15 @@
             <header>
             <h2><a href="{{route('article',['curl'=>$article['curl'].'-'.$article['id']])}}">{{$article['title']}}</a></h2>
             </header>
-            <aside> 
-                <p>tags
-                    @foreach($article['tags'] as $tag)
-                        | <a href="{{route('tag',['curl'=>$tag['curl'].'-'.$tag['id']])}}">{{$tag['name']}}</a>
-                    @endforeach
-                </p>
-            </aside>
+            @if(!empty($article['tags']))
+                <aside> 
+                    <p>tags
+                        @foreach($article['tags'] as $tag)
+                            | <a href="{{route('tag',['curl'=>$tag['curl'].'-'.$tag['id']])}}">{{$tag['name']}}</a>
+                        @endforeach
+                    </p>
+                </aside>
+            @endif
             <p>Дата публикации:
                 <time pubdate datetime="{{$article['updated_at']->format('Y-m-d\TH:j:s')}}">
                     {{$article['updated_at']->format('d.m.Y H:j:s')}}

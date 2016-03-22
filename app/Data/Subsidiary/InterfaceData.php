@@ -3,9 +3,6 @@
 namespace App\Data\Subsidiary;
 
 interface InterfaceData{
-
-    public function clearAllCash();
-
-    public function clearCash($condition = []);
-
+    //Очистить весь кэш
+    public function clear();
 }

@@ -12,14 +12,14 @@ class ClearCache extends Command
      *
      * @var string
      */
-    protected $signature = 'clearcache';
+    protected $signature = 'automatic_cache:clear';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Очищает весь автоматический кэш';
+    protected $description = 'Clears automatic cache';
 
     /**
      * Create a new command instance.
@@ -38,23 +38,23 @@ class ClearCache extends Command
      */
     public function handle()
     {   Cache::store('aside')->flush();
-        $this->info('Кэш меню очищен');
+        $this->info('Asides cleared');
         
         Cache::store('prevAll')->flush();
-        $this->info('Кэш всех превью очищен');
+        $this->info('Prev. cleared');
         
         Cache::store('prevCat')->flush();
-        $this->info('Кэш превью всех категорий очищен');
+        $this->info('Prev./cat. cleared');
         
         Cache::store('prevTag')->flush();
-        $this->info('Кэш превью всех тегов очищен');
+        $this->info('Prev./tag. cleared');
         
         Cache::store('article')->flush();
-        $this->info('Кэш всех статей очищен');
+        $this->info('Articles cleared');
         
         Cache::store('comments')->flush();
-        $this->info('Кэш всех комментариев к статье очищен');
+        $this->info('Comments cleared');
         
-        $this->info('Весь автоматический кэш очищен!');
+        $this->info('All automatic cache cleared');
     }
 }

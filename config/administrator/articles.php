@@ -10,8 +10,8 @@ return [
         'title',
         'active',
         'comments_enable',
-        'preview',
-        'content',
+      //'preview',
+      //'content',
         'meta_description',
         'meta_keywords',
         'categories_id' => [
@@ -53,15 +53,16 @@ return [
             'type' => 'text',
         ],
         'category' => [
-            'type' => 'relationship',
-            'title' => 'Категории',
+            'type'       => 'relationship',
+            'title'      => 'Категории',
             'name_field' => 'name',
         ],
         'tags' => [
-            'type' => 'relationship',
-            'title' => 'Категории',
+            'type'       => 'relationship',
+            'title'      => 'Категории',
             'name_field' => 'name',
-        ]
+        ],
+        
     ],
     'filters' => [
         'active' => [
@@ -70,19 +71,20 @@ return [
         'comments_enable' => [
             'type' => 'bool',
         ],
-        'curl' => [
+        'title' => [
             'type' => 'text',
         ],
         'category' => [
-            'type' => 'relationship',
-            'title' => 'Категории',
+            'type'       => 'relationship',
+            'title'      => 'Категории',
             'name_field' => 'name',
         ],
         'tags' => [
-            'type' => 'relationship',
-            'title' => 'Категории',
+            'type'       => 'relationship',
+            'title'      => 'Категории',
             'name_field' => 'name',
-        ]
+        ],
+        
     ],
     
     'rules' => [
@@ -92,4 +94,23 @@ return [
     
     //Ширина области справа
     'form_width' => 430,
+    
+    'global_actions' => array(
+        'download_excel' => array(
+            'title'     => 'Очистить кэш',
+            'messages'  => array(
+                'active'    => 'Очистка кэша всех статей',
+                'success'   => 'Подождите. Очищается кэш...',
+                'error'     => 'ERROR',
+            ),
+            'action' => function($query)
+            {
+                $articles = new  App\Data\Article;
+                $articles -> clear();
+                $preview  = new App\Data\Previews;
+                $preview -> clear();
+                return true;
+            }
+        ),
+    ),
 ];

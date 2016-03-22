@@ -77,4 +77,20 @@ return [
     ],
 
     'form_width' => 430,
+    
+    'global_actions' => array(
+        'download_excel' => array(
+            'title'     => 'Очистить кэш',
+            'messages'  => array(
+                'active'    => 'Очистка кэша всех комментариев',
+                'success'   => 'Подождите. Очищается кэш...',
+                'error'     => 'ERROR',
+            ),
+            'action' => function($query)
+            {   $comments = new App\Data\Comments;
+                $comments -> clear();
+                return true;
+            }
+        ),
+    ),
 ];

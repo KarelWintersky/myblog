@@ -13,8 +13,6 @@ class MainController extends Controller
         //Подключаем навигацию по категориям во все представления
         //Вариант 2: можно было поместить эти данные в ассициативный массив $data
         view()->share('categories', $cat_cl -> getCategoryNavigate());
-        //Подключаем основное меню во все представления
-        view()->share('menu', $cat_cl->getMainNavigate());
     }
 
     // да, да, можно было расширить Request,

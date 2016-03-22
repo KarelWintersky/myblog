@@ -1,11 +1,9 @@
 <?php
-
 namespace App\Providers;
 
-//use App\Model\Categories;
-//use App\Model\Menu;
 use Illuminate\Support\ServiceProvider;
-use Blade;
+use App\Model\Articles;
+use APP\Data\Previews;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
         //Подключаем основное меню во все представления
         //$menu = new Menu;
         //view()->share('menu', $menu->getMenu());
+
     }
 
 

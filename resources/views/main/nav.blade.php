@@ -46,7 +46,8 @@
                         ])}}
                     </div>
                 </div>
-        </div>        
+            {{Form::close()}}
+        </div>    
         
         <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">

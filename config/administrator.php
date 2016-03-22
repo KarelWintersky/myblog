@@ -67,7 +67,6 @@ return array(
 	 */
 	'menu' => array(
 		'users',
-		'menus',
 		'categories',
 		'tags',
 		'articles',

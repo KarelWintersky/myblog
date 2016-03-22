@@ -23,16 +23,19 @@
 @section('content')
 
     <article>
-        </header>
+        <header>
             <h2>{{$article['title']}}</h2>
         </header>
-        <aside> 
-            <p>tags
-                @foreach($article['tags'] as $tag)
-                    | <a href="{{route('tag',['curl'=>$tag['curl'].'-'.$tag['id']])}}">{{$tag['name']}}</a>
-                @endforeach
-            </p>
-        </aside>
+        
+        @if(!empty($article['tags']))
+            <aside> 
+                <p>tags
+                    @foreach($article['tags'] as $tag)
+                        | <a href="{{route('tag',['curl'=>$tag['curl'].'-'.$tag['id']])}}">{{$tag['name']}}</a>
+                    @endforeach
+                </p>
+            </aside>
+        @endif
         
         <p>Дата публикации:
             <time pubdate datetime={{$article['updated_at']->format('Y-m-d\TH:j:s')}}>
@@ -42,7 +45,7 @@
         
         {!!$article['content']!!}
         
-        @if($article['comments']!=[])
+        @if(!empty($article['comments']))
             <section id="comments">
                 <h3>Коментарии:</h3>
                     @foreach($article['comments'] as $comment)
