@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  @yield('title')
-  @yield('head')
+  @yield('title')  
   <link rel="stylesheet" href="{{asset('packages/bootstrap-3.3.6-dist/css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('packages/bootstrap-3.3.6-dist/css/bootstrap-theme.css')}}">
   <script src="{{asset('packages/jQuery/jquery-2.2.1.min.js')}}"></script>
   <script src="{{asset('packages/bootstrap-3.3.6-dist/js/bootstrap.min.js')}}"></script>
+  @yield('head')
   <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script-->
   <!--[if lt IE 9]>

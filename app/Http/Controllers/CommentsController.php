@@ -25,7 +25,7 @@ class CommentsController extends MainController
         ],$messages);
 
         $comments->saveComment($request->all(),'guest');
-        return back()->with('message','Спасибо за комментарий. После проверки он будет опубликован'); //редирект обратно к форме с сообщением
+        return back()->with('message','Спасибо за ваш комментарий. После проверки он будет опубликован'); //редирект обратно к форме с сообщением
     }
 
     public function show()

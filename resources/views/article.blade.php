@@ -14,6 +14,22 @@
 
 @section('head')
     <script src="https://www.google.com/recaptcha/api.js"></script>
+	@if(Session::has('message'))  
+		<script>
+			//Работа с модальными окнами
+			$( document ).ready(function() {
+				$('#myModal').modal();			
+				$('#myModal').modal("show");
+			});			
+		</script>
+	@elseif ($errors->has())
+		<script>
+			//В форме ошибки, переходим сразу к правке комментариев
+			$( document ).ready(function() {
+				location.href = '#add-comments';	
+			});	
+		</script>
+	@endif
 @endsection
 
 @section('bread')
@@ -21,7 +37,17 @@
 @endsection
 
 @section('content')
-
+	@if(Session::has('message'))
+		<div id="myModal" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">{{Session::get('message')}}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	@endif		
     <article>
         <header>
             <h2>{{$article['title']}}</h2>
@@ -52,7 +78,7 @@
                         @if($comment['answer'] != 1)
                             <div class="media">
                                 <a class="pull-left" href="#">
-                                    <img class="media-object" src="/images/img_64_64.png">
+                                    <img class="media-object" src="/images/comments/img_64_64.png">
                                 </a>
 
                                     <div class="media-body">
@@ -64,7 +90,7 @@
                             <!-- Ответ -->
                             <div class="media well">
                                 <a class="pull-left" href="#">
-                                    <img class="media-object" src="/images/img_adm_64_64.png">
+                                    <img class="media-object" src="/images/comments/img_adm_64_64.png">
                                 </a>
                                 <div class="media-body">
                                     <h4 class="media-heading">Хозяин блога</h4>
@@ -78,7 +104,9 @@
        
         @if($article['is_comments'])
         <aside>
-            <h3>Добавить коментарий:</h3>
+            <h3 id="add-comments">
+				Добавить коментарий
+			</h3>
             
             {{Form::open([
                 'id'        =>  'comment_form',
@@ -118,7 +146,7 @@
                     'placeholder'   =>  'Введите email'
                 ])}}
                 @if($errors->has())
-                    @if($errors->has('user'))
+                    @if($errors->has('email'))
                         <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                     @else
                         <span class="glyphicon glyphicon-ok form-control-feedback"></span>
