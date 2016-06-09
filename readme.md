@@ -27,18 +27,18 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
 
-## Демонтрационный блог. Возможности
+## Демонтрационный блог. 
 
-* Статьи, Теги, Категории, Комментарии
-* Поиск: "nicolaslopezj/searchable": "1.*",
-* Панель администратора: "frozennode/administrator": "5.*",
-* Хлебные крошки: "nicolaslopezj/searchable": "1.*",
+* Laravel 5.2
+* Статьи, Теги, Категории, Комментарии (Для создания Комментариев использовался следующий создатель форм: [laravelcollective/html v5.2] (https://github.com/LaravelCollective/html))
+* Поиск: [nicolaslopezj/searchable v1.*] (https://github.com/nicolaslopezj/searchable),
+* Панель администратора: [frozennode/administrator v5.*] (https://github.com/FrozenNode/Laravel-Administrator),
+* Хлебные крошки: [nicolaslopezj/searchable v1.*] (https://github.com/nicolaslopezj/searchable),
+* Автоматическое кэширование (В Laravel 5 убрали возможность 'из коробки' кешировать запросы, кэширование по-умолчанию файловое),
 * Расширенный Blade. Добавлен оператор @SWITCH,	
-* Для создания Комментариев использовался следующий создатель форм: [Мой сайт] (http://webdesign.ru.net) .
-* Автоматическое кэширование (по-умолчанию файловое),
-* Расширенная консоль artisan (обавлена команда очистки кэша),
+* Расширенная консоль artisan (добавлена команда очистки кэша),
 * Миграции, Сиды.
-* Вёрстка: bootstrap-3.3.6.
+* Вёрстка: html5, bootstrap-3.3.6.
 	
 ## Установка
 
