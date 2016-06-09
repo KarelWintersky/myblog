@@ -33,7 +33,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 	Панель администратора: "frozennode/administrator": "5.*",
 	Хлебные крошки: "nicolaslopezj/searchable": "1.*",
 	Расширенный Blade. Добавлен оператор @SWITCH,	
-	Для создания Комментариев использовался следующий создатель форм: [!["laravelcollective/html": "^5.2"](https://github.com/LaravelCollective/html)](https://github.com/LaravelCollective/html)
+	Для создания Комментариев использовался следующий создатель форм: [![laravelcollective/html: 5.2](https://github.com/LaravelCollective/html)](https://github.com/LaravelCollective/html)
 	Автоматическое кэширование (по-умолчанию файловое),
 	Расширенная консоль artisan (обавлена команда очистки кэша),
 	Миграции, Сиды.
@@ -43,14 +43,14 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 Требования : php > 5.5.9, git, composer
 
-В консоле по очереди выполните команды:
-git clone https://github.com/panfillich/myblog.git
-composer install
-Переименуйте файл .env.example в .env из корневой директории и выполните команду:
+В консоле по очереди выполните команды: 
+git clone https://github.com/panfillich/myblog.git 
+composer install 
+Переименуйте файл .env.example в .env из корневой директории и выполните команду: 
 php artisan key:generate 
-В .env и config\database настройте соединение с БД и продолжете выполнение команд:
-php artisan migrate
-php artisan db:seed
+В .env и config\database настройте соединение с БД и продолжете выполнение команд: 
+php artisan migrate 
+php artisan db:seed 
 
 
 
