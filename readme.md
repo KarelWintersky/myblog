@@ -2,7 +2,7 @@
 
 * Laravel 5.2
 * Статьи, Теги, Категории 
-* Комментарии (Для создания Комментариев использовался следующий создатель форм: [laravelcollective/html v5.2] (https://github.com/LaravelCollective/html)
+* Комментарии (Для создания использовался следующий построитель форм : [laravelcollective/html v5.2] (https://github.com/LaravelCollective/html))
 * Поиск: [nicolaslopezj/searchable v1.*] (https://github.com/nicolaslopezj/searchable)
 * Панель администратора: [frozennode/administrator v5.*] (https://github.com/FrozenNode/Laravel-Administrator)
 * Хлебные крошки: [davejamesmiller/laravel-breadcrumbs v3.0] (https://github.com/davejamesmiller/laravel-breadcrumbs),
