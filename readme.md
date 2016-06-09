@@ -25,3 +25,36 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ### License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+
+## Демонтрационный блог. Возможности:
+	Статьи, Теги, Категории, Комментарии
+	Поиск: "nicolaslopezj/searchable": "1.*",
+	Панель администратора: "frozennode/administrator": "5.*",
+	Хлебные крошки: "nicolaslopezj/searchable": "1.*",
+	Расширенный Blade. Добавлен оператор @SWITCH,	
+	Для создания Комментариев использовался следующий создатель форм: [!["laravelcollective/html": "^5.2"](https://github.com/LaravelCollective/html)](https://github.com/LaravelCollective/html)
+	Автоматическое кэширование (по-умолчанию файловое),
+	Расширенная консоль artisan (обавлена команда очистки кэша),
+	Миграции, Сиды.
+	Вёрстка: bootstrap-3.3.6.
+	
+## Установка
+
+Требования : php > 5.5.9, git, composer
+
+В консоле по очереди выполните команды:
+git clone https://github.com/panfillich/myblog.git
+composer install
+Переименуйте файл .env.example в .env из корневой директории и выполните команду:
+php artisan key:generate 
+В .env и config\database настройте соединение с БД и продолжете выполнение команд:
+php artisan migrate
+php artisan db:seed
+
+
+
+
+
+
+
