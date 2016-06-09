@@ -27,28 +27,28 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
 
-## Демонтрационный блог. Возможности:
-	Статьи, Теги, Категории, Комментарии
-	Поиск: "nicolaslopezj/searchable": "1.*",
-	Панель администратора: "frozennode/administrator": "5.*",
-	Хлебные крошки: "nicolaslopezj/searchable": "1.*",
-	Расширенный Blade. Добавлен оператор @SWITCH,	
-	Для создания Комментариев использовался следующий создатель форм: [!["laravelcollective/html": "^5.2"](https://github.com/LaravelCollective/html)](https://github.com/LaravelCollective/html)
-	Автоматическое кэширование (по-умолчанию файловое),
-	Расширенная консоль artisan (обавлена команда очистки кэша),
-	Миграции, Сиды.
-	Вёрстка: bootstrap-3.3.6.
+## Р”РµРјРѕРЅС‚СЂР°С†РёРѕРЅРЅС‹Р№ Р±Р»РѕРі. Р’РѕР·РјРѕР¶РЅРѕСЃС‚Рё:
+	РЎС‚Р°С‚СЊРё, РўРµРіРё, РљР°С‚РµРіРѕСЂРёРё, РљРѕРјРјРµРЅС‚Р°СЂРёРё
+	РџРѕРёСЃРє: "nicolaslopezj/searchable": "1.*",
+	РџР°РЅРµР»СЊ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°: "frozennode/administrator": "5.*",
+	РҐР»РµР±РЅС‹Рµ РєСЂРѕС€РєРё: "nicolaslopezj/searchable": "1.*",
+	Р Р°СЃС€РёСЂРµРЅРЅС‹Р№ Blade. Р”РѕР±Р°РІР»РµРЅ РѕРїРµСЂР°С‚РѕСЂ @SWITCH,	
+	Р”Р»СЏ СЃРѕР·РґР°РЅРёСЏ РљРѕРјРјРµРЅС‚Р°СЂРёРµРІ РёСЃРїРѕР»СЊР·РѕРІР°Р»СЃСЏ СЃР»РµРґСѓСЋС‰РёР№ СЃРѕР·РґР°С‚РµР»СЊ С„РѕСЂРј: [!["laravelcollective/html": "^5.2"](https://github.com/LaravelCollective/html)](https://github.com/LaravelCollective/html)
+	РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРµ РєСЌС€РёСЂРѕРІР°РЅРёРµ (РїРѕ-СѓРјРѕР»С‡Р°РЅРёСЋ С„Р°Р№Р»РѕРІРѕРµ),
+	Р Р°СЃС€РёСЂРµРЅРЅР°СЏ РєРѕРЅСЃРѕР»СЊ artisan (РѕР±Р°РІР»РµРЅР° РєРѕРјР°РЅРґР° РѕС‡РёСЃС‚РєРё РєСЌС€Р°),
+	РњРёРіСЂР°С†РёРё, РЎРёРґС‹.
+	Р’С‘СЂСЃС‚РєР°: bootstrap-3.3.6.
 	
-## Установка
+## РЈСЃС‚Р°РЅРѕРІРєР°
 
-Требования : php > 5.5.9, git, composer
+РўСЂРµР±РѕРІР°РЅРёСЏ : php > 5.5.9, git, composer
 
-В консоле по очереди выполните команды:
+Р’ РєРѕРЅСЃРѕР»Рµ РїРѕ РѕС‡РµСЂРµРґРё РІС‹РїРѕР»РЅРёС‚Рµ РєРѕРјР°РЅРґС‹:
 git clone https://github.com/panfillich/myblog.git
 composer install
-Переименуйте файл .env.example в .env из корневой директории и выполните команду:
+РџРµСЂРµРёРјРµРЅСѓР№С‚Рµ С„Р°Р№Р» .env.example РІ .env РёР· РєРѕСЂРЅРµРІРѕР№ РґРёСЂРµРєС‚РѕСЂРёРё Рё РІС‹РїРѕР»РЅРёС‚Рµ РєРѕРјР°РЅРґСѓ:
 php artisan key:generate 
-В .env и config\database настройте соединение с БД и продолжете выполнение команд:
+Р’ .env Рё config\database РЅР°СЃС‚СЂРѕР№С‚Рµ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р‘Р” Рё РїСЂРѕРґРѕР»Р¶РµС‚Рµ РІС‹РїРѕР»РЅРµРЅРёРµ РєРѕРјР°РЅРґ:
 php artisan migrate
 php artisan db:seed
 
