@@ -33,7 +33,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 	Панель администратора: "frozennode/administrator": "5.*",
 	Хлебные крошки: "nicolaslopezj/searchable": "1.*",
 	Расширенный Blade. Добавлен оператор @SWITCH,	
-	Для создания Комментариев использовался следующий создатель форм: [laravelcollective/html: 5.2](https://github.com/LaravelCollective/html)
+	Для создания Комментариев использовался следующий создатель форм: [laravelcollective html](https://github.com/LaravelCollective/html).
 	Автоматическое кэширование (по-умолчанию файловое),
 	Расширенная консоль artisan (обавлена команда очистки кэша),
 	Миграции, Сиды.
