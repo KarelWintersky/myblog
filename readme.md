@@ -1,8 +1,8 @@
-## Демонcтрационный блог. 
+## Демонстрационный блог. 
 
 * Laravel 5.2
-* Статьи, Теги, Категории 
-* Комментарии (Для создания использовался следующий построитель форм : [laravelcollective/html v5.2] (https://github.com/LaravelCollective/html))
+* Статьи, Теги, Категории
+* Комментарии (Для создания использовался построитель форм [laravelcollective/html v5.2] (https://github.com/LaravelCollective/html))
 * Поиск: [nicolaslopezj/searchable v1.*] (https://github.com/nicolaslopezj/searchable)
 * Панель администратора: [frozennode/administrator v5.*] (https://github.com/FrozenNode/Laravel-Administrator)
 * Хлебные крошки: [davejamesmiller/laravel-breadcrumbs v3.0] (https://github.com/davejamesmiller/laravel-breadcrumbs),
@@ -17,7 +17,7 @@
 
 Требования : php > 5.5.9, git, composer
 
-В консоле по очереди выполните команды: 
+В консоли по очереди выполните команды: 
 
 	git clone https://github.com/panfillich/myblog.git 
 	composer install 
@@ -26,7 +26,7 @@
 
 	php artisan key:generate 
 	
-В .env и config\database настройте соединение с БД и продолжете выполнение команд: 
+В .env и config\database настройте соединение с БД и продолжите выполнение команд: 
 
 	php artisan migrate 
 	php artisan db:seed 
