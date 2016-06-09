@@ -45,13 +45,13 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 Требования : php > 5.5.9, git, composer
 
 В консоле по очереди выполните команды: 
-git clone https://github.com/panfillich/myblog.git 
-composer install 
+	git clone https://github.com/panfillich/myblog.git 
+	composer install 
 Переименуйте файл .env.example в .env из корневой директории и выполните команду: 
-php artisan key:generate 
+	php artisan key:generate 
 В .env и config\database настройте соединение с БД и продолжете выполнение команд: 
-php artisan migrate 
-php artisan db:seed 
+	php artisan migrate 
+	php artisan db:seed 
 
 
 
