@@ -40,7 +40,7 @@
                 </aside>
             @endif
             <p>Дата публикации:
-                <time pubdate datetime="{{$article['updated_at']->format('Y-m-d\TH:j:s')}}">
+                <time datetime="{{$article['updated_at']->format('Y-m-d\TH:j:s')}}">
                     {{$article['updated_at']->format('d.m.Y H:j:s')}}
                 </time>
             </p>

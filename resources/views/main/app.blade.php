@@ -22,15 +22,19 @@
     </div>
     <!-- Шапка сайта -->
     <header class="header media well">
-      <!--figure>
-        <p><img src="images/logo.jpg" alt="Логотип"/></p>
-        <figcaption>блоголого</figcaption>
-      </figure-->
-      <h1>Демонстрационный сайт / блог</h1>
-      <h2>Описание сайта</h2>
+		<div class="container">    
+			<div class="row">
+			  <!--figure>
+				<p><img src="images/logo.jpg" alt="Логотип"/></p>
+				<figcaption>блоголого</figcaption>
+			  </figure-->
+			  <h1>Демонстрационный сайт / блог</h1>
+			  <h2>Описание сайта</h2>
+		  </div>
+		</div>
     </header>
     
-    <main role="main">
+    <main>
         <!-- Хлебные крошки -->
         @yield('bread')
         <!--конец блока-->
@@ -47,11 +51,9 @@
                     <!--конец блока-->          
                 </div>
                 <div class="col-sm-7 col-md-6">
-                    <main>
-                        <!--Блок основного контента-->
-                        @yield('content')
-                        <!--конец блока-->
-                    </main>
+					<!--Блок основного контента-->
+					@yield('content')
+					<!--конец блока-->
                 </div>    
             </div>
         </div>

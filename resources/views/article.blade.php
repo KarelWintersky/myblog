@@ -64,7 +64,7 @@
         @endif
         
         <p>Дата публикации:
-            <time pubdate datetime={{$article['updated_at']->format('Y-m-d\TH:j:s')}}>
+            <time datetime={{$article['updated_at']->format('Y-m-d\TH:j:s')}}>
                 {{$article['updated_at']->format('d.m.Y H:j:s')}}
             </time>
         </p>
@@ -78,7 +78,7 @@
                         @if($comment['answer'] != 1)
                             <div class="media">
                                 <a class="pull-left" href="#">
-                                    <img class="media-object" src="/images/comments/img_64_64.png">
+                                    <img class="media-object" alt="" src="/images/comments/img_64_64.png">
                                 </a>
 
                                     <div class="media-body">
@@ -90,7 +90,7 @@
                             <!-- Ответ -->
                             <div class="media well">
                                 <a class="pull-left" href="#">
-                                    <img class="media-object" src="/images/comments/img_adm_64_64.png">
+                                    <img class="media-object" alt="" src="/images/comments/img_adm_64_64.png">
                                 </a>
                                 <div class="media-body">
                                     <h4 class="media-heading">Хозяин блога</h4>
@@ -110,8 +110,7 @@
             
             {{Form::open([
                 'id'        =>  'comment_form',
-                'route'     =>  'comment_save',
-                'role'      =>  'form',
+                'route'     =>  'comment_save',                
             ])}}            
             
             {{Form::hidden('article_id',$article['id'])}}
@@ -183,6 +182,7 @@
                     'onClick' => "document.getElementById('comment_form').submit();",
                 ])}}
             </div>
+			{{ Form::close() }}
         </aside>
         @else
             <div class="alert alert-warning">

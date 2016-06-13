@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -28,8 +28,7 @@
         <div class="col-sm-3 col-md-3 pull-left">
             {{Form::open([
                 'id'        =>  'search_form',
-                'route'     =>  'search',
-                'role'      =>  'form',
+                'route'     =>  'search',                
                 'class'     =>  'navbar-form',
                 'method'    =>  'GET'
             ])}}     
@@ -37,7 +36,7 @@
                 <div class="input-group">
                     {{Form::text('q',null,[
                         'class'         => 'form-control',
-                        'placeholder'   => 'Пой и щи'
+                        'placeholder'   => 'Поиск...'
                     ])}}
                     <div class="input-group-btn">                        
                         {{Form::button('<i class="glyphicon glyphicon-search"></i>',[
@@ -60,6 +59,7 @@
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
+						<li><a href="{{ url('/admin/articles') }}"><i class="fa fa-btn fa-sign-out"></i>Admin panel</a></li>
                         <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                     </ul>
                 </li>
