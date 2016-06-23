@@ -12,6 +12,7 @@
 * Миграции, Сиды
 * Вёрстка: html5, bootstrap-3.3.6
 * Для разработчика уже присутствует ([barryvdh/laravel-debugbar v2.1] (https://github.com/barryvdh/laravel-debugbar), [barryvdh/laravel-ide-helper v2.1] (https://github.com/barryvdh/laravel-ide-helper))
+* Сам блог [mybloglaravel5.atwebpages.com] (http://mybloglaravel5.atwebpages.com)
 	
 ## Установка
 
@@ -24,7 +25,9 @@
 	
 Переименуйте файл .env.example в .env из корневой директории и выполните команду: 
 
-	php artisan key:generate 
+	'id_game'	:'game_1',	//id тега, куда помещаем canvas !обязательный параметр
+	'id_config'	:'conf_1',	//id тега, куда помещаем меню настроек
+	'id_points'	:'point_1'	//id тега, куда помещаем очки
 	
 В .env и config\database настройте соединение с БД и продолжите выполнение команд: 
 
